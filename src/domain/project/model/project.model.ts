@@ -8,6 +8,8 @@ export interface ProjectModel {
   teamId: number
 }
 
+export type CreateProjectParams = Record<'project_name', string> & Record<'team_id', string>
+
 export interface ProjectHealthyModel {
   httpError: number
   jsError: number

@@ -1,9 +1,9 @@
-import { ProjectModel } from './project.model'
+import { CreateProjectParams, ProjectModel } from './project.model'
 
 export abstract class ProjectRepository {
   abstract getProject(): Promise<ProjectModel>
   abstract getProjects(): Promise<Array<ProjectModel>>
-  // abstract createProject(): Promise<TeamIF.Project>
+  abstract createProject(param: CreateProjectParams): Promise<ProjectModel>
   // abstract getHealthStatus(): Promise<TeamIF.ProjectHealthys>
   abstract delProject(id: number): Promise<string>
 }

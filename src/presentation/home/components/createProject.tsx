@@ -1,6 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons'
 import { Button, Col, Form, Input, Row, Select, FormInstance } from 'antd'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getTeamListAdapter } from '../../../domain/team/application/get-team-adapter'
 import { ModalFrom } from '../../../features/modalForm/modalForm'

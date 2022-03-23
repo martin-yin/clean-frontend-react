@@ -5,7 +5,7 @@ import { useHookTools } from '../../../utils/toolhook'
 import { ProjectModel } from '../model/project.model'
 import { GetProjectListUseCase } from '../usecase/get-project-list-usercase'
 
-export const navMenuAdapter = (projects: Array<ProjectModel>) => {
+export const navMenuProjetListAdapter = (projects: Array<ProjectModel>) => {
   const { navigate, storeDispatch } = useHookTools()
   const getProjectList = InjectFactoryGet<GetProjectListUseCase>(GetProjectListUseCase)
   useEffect(() => {

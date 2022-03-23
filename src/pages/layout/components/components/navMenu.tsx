@@ -3,7 +3,7 @@ import { Avatar, Dropdown, Menu, Select } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { navMenuAdapter } from '../../../../domain/project/application/nav.menu.adapter'
+import { navMenuProjetListAdapter } from '../../../../domain/project/application/navmenu-projectlist-adapter'
 import { ProjectModel } from '../../../../domain/project/model/project.model'
 import { useAppState } from '../../../../stores'
 
@@ -11,7 +11,7 @@ const { Option } = Select
 
 const ProjectListRender: FC = () => {
   const { projectList, monitorId } = useAppState(state => state.appsotre)
-  const setActiveMonitorId = navMenuAdapter(projectList)
+  const setActiveMonitorId = navMenuProjetListAdapter(projectList)
   return (
     <div>
       <Select

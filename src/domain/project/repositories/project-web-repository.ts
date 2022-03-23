@@ -1,6 +1,6 @@
 import { request } from '../../../utils/request'
 import { ProjectEntity, ProjectRepository } from '../model/project.entity'
-import { ProjectModel } from '../model/project.model'
+import { CreateProjectParams, ProjectModel } from '../model/project.model'
 import { ProjectWebRepositoryMapper } from './mapper/project-web-repository.mapper'
 
 export class ProjectWebRepository extends ProjectRepository {
@@ -18,5 +18,10 @@ export class ProjectWebRepository extends ProjectRepository {
 
   delProject(id: number): Promise<string> {
     throw new Error('Method not implemented.')
+  }
+
+  async createProject(param: CreateProjectParams): Promise<ProjectModel> {
+    const { data, code } = await request<ProjectEntity>('post', '/admin/createProject', param)
+    return this.mapper.mapFrom(data)
   }
 }
