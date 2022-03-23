@@ -1,0 +1,62 @@
+.ant-layout-content {
+  overflow-y: scroll;
+  padding: 24px;
+}
+
+/*
+.ant-layout {
+  min-width: 1600px;
+}
+
+.site-layout-content {
+  min-width: 1560px;
+  margin: 20px;
+}
+
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+a {
+  color: #333;
+}
+
+.home-size {
+  font-size: 20px;
+}
+
+.ant-card-bordered {
+  border: none !important;
+}
+
+
+.flex-item {
+  flex-basis: 50px;
+  text-align: right;
+}
+
+.ant-tag {
+  cursor: pointer;
+}
+
+.active {
+  color: #4395ff;
+}
+
+.action_time_line_image {
+  width: 50px;
+  height: 50px;
+}
+
+.userActionIcon {
+  width: 60px;
+  height: 60px;
+}
+
+.over-hidde {
+  overflow: hidden; 
+  white-space: nowrap; 
+  width: 450px;
+  text-overflow: ellipsis; 
+}*/
