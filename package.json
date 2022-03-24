@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "lint": "prettier --write . && git add .",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -27,8 +28,8 @@
     "windicss": "^3.5.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
@@ -45,22 +46,5 @@
     "reflect-metadata": "^0.1.13",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "packages/**/*.{ts,tsx,js}": [
-      "prettier --write .",
-      "git add ."
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   }
 }
