@@ -1,8 +1,11 @@
 import { PlusOutlined } from '@ant-design/icons'
 import { Button, Col, Form, Input, Row, Select, FormInstance } from 'antd'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { InjectFactoryGet } from '../../../code/decorator'
 import { getTeamListAdapter } from '../../../domain/team/application/get-team-adapter'
+import { TeamModel } from '../../../domain/team/model/team.model'
+import { GetTeamListUseCase } from '../../../domain/team/usecase/get-team-list-usecase'
 import { ModalFrom } from '../../../features/modalForm/modalForm'
 
 const { Option } = Select
@@ -16,7 +19,15 @@ interface CreateProjectProps {
 
 const CreateProject: FC<CreateProjectProps> = ({ visible, onClose, onCreate, form }) => {
   const navigate = useNavigate()
-  const { teamList } = getTeamListAdapter()
+  const getTeamListUseCase = InjectFactoryGet<GetTeamListUseCase>(GetTeamListUseCase)
+  const [teamList, setTeamList] = useState<Array<TeamModel>>([])
+
+  useEffect(() => {
+    ;(async () => {
+      const data = await getTeamListUseCase.execute()
+      setTeamList(data)
+    })()
+  }, [])
 
   return (
     <ModalFrom onClose={onClose} visible={visible} onCreate={onCreate} title="创建项目">

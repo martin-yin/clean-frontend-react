@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import { UseCase } from '../../../code/base/use.case'
 import { Injectable } from '../../../code/decorator'
 import { ProjectRepository } from '../model/project.entity'
@@ -8,6 +9,11 @@ import { ProjectWebRepository } from '../repositories/project-web-repository'
 export class CreateProjectUseCase implements UseCase<CreateProjectParams, ProjectModel> {
   constructor(private projectRepository: ProjectRepository) {}
   async execute(param: CreateProjectParams): Promise<ProjectModel> {
-    return this.projectRepository.createProject(param)
+    const data = await this.projectRepository.createProject(param)
+    if (data) {
+      message.success('创建成功!')
+      return data
+    }
+    return {} as ProjectModel
   }
 }

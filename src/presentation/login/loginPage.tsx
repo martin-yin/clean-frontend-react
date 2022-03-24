@@ -2,12 +2,34 @@ import React, { FC } from 'react'
 import { Input, Form, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { Tabs } from 'antd'
-import { AdminLoginUseCase } from '../../domain/user/usecase/admin.login.use.case'
-import { adminAdapter } from '../../domain/user/application/admin.adapter'
 import './index.less'
+import { InjectFactoryGet } from '../../code/decorator'
+import { AdminLoginUseCase } from '../../domain/user/usecase/admin-login-usecase'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { LoginParam, RegisterParam } from '../../domain/user/model/admin.model'
+import { setUserInfo } from '../../stores/app.store'
+import { AdminRegisterUseCase } from '../../domain/user/usecase/admin-register-usecase'
 const { TabPane } = Tabs
 const LoginPage: FC = () => {
-  const { handleSubmit, handleRegister } = adminAdapter()
+  const adminLogin = InjectFactoryGet<AdminLoginUseCase>(AdminLoginUseCase)
+
+  const adminRegister = InjectFactoryGet<AdminRegisterUseCase>(AdminRegisterUseCase)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleSubmit = async (form: LoginParam) => {
+    const data = await adminLogin.execute(form)
+    dispatch(setUserInfo(data))
+    navigate('/')
+  }
+
+  const handleRegister = async (form: RegisterParam) => {
+    const data = await adminRegister.execute(form)
+    dispatch(setUserInfo(data))
+    navigate('/')
+  }
 
   return (
     <div className={'login_container mx-auto'}>

@@ -10,7 +10,7 @@ export interface ProjectModel {
 
 export type CreateProjectParams = Record<'project_name', string> & Record<'team_id', string>
 
-export interface ProjectHealthyModel {
+export interface ProjectStatusModel extends ProjectModel {
   httpError: number
   jsError: number
   pv: number

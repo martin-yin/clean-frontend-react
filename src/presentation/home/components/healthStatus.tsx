@@ -7,10 +7,10 @@ import { useDispatch } from 'react-redux'
 import ProCard from '@ant-design/pro-card'
 import { useNavigate } from 'react-router'
 import { setMonitorId } from '../../../stores/app.store'
-import { ProjectHealthyModel } from '../../../domain/project/model/project.model'
+import { ProjectStatusModel } from '../../../domain/project/model/project.model'
 
 interface HealthStatusItemProps {
-  detail: ProjectHealthyModel
+  detail: ProjectStatusModel
 }
 
 const HealthStatusItem: FC<HealthStatusItemProps> = ({ detail }) => {
@@ -22,7 +22,7 @@ const HealthStatusItem: FC<HealthStatusItemProps> = ({ detail }) => {
   }
 
   // 计算健康状态
-  const getHealthyRate = (detail: ProjectHealthyModel) => {
+  const getHealthyRate = (detail: ProjectStatusModel) => {
     if (detail) {
       if (detail.pv == 0) {
         return 0
@@ -90,7 +90,7 @@ const HealthStatusItem: FC<HealthStatusItemProps> = ({ detail }) => {
 }
 
 interface HealthStatusProps {
-  list: Array<ProjectHealthyModel>
+  list: Array<ProjectStatusModel>
   openModal: () => void
 }
 

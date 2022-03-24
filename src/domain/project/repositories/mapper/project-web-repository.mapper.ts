@@ -1,6 +1,6 @@
 import { Mapper } from '../../../../code/base/mapper'
-import { ProjectEntity } from '../../model/project.entity'
-import { ProjectModel } from '../../model/project.model'
+import { ProjectEntity, ProjectStatusEntity } from '../../model/project.entity'
+import { ProjectStatusModel, ProjectModel } from '../../model/project.model'
 
 export class ProjectWebRepositoryMapper extends Mapper<ProjectEntity, ProjectModel> {
   mapFrom(param: ProjectEntity): ProjectModel {
@@ -16,5 +16,22 @@ export class ProjectWebRepositoryMapper extends Mapper<ProjectEntity, ProjectMod
   }
   mapTo(param: ProjectModel): ProjectEntity {
     throw new Error('Method not implemented.')
+  }
+
+  mapFromProjectHealthyModel(param: ProjectStatusEntity): ProjectStatusModel {
+    return {
+      id: param.id,
+      adminId: param.admin_id,
+      logo: param.logo,
+      projectType: param.project_type,
+      teamId: param.team_id,
+      httpError: param.http_error,
+      jsError: param.js_error,
+      pv: param.pv,
+      resourcesError: param.resources_error,
+      uv: param.uv,
+      projectName: param.project_name,
+      monitorId: param.monitor_id
+    }
   }
 }

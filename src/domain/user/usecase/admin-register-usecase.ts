@@ -1,7 +1,7 @@
 import { UseCase } from '../../../code/base/use.case'
 import { Injectable } from '../../../code/decorator'
 import { AdminModel, RegisterParam } from '../model/admin.model'
-import { AdminWebRepository } from '../repositories/admin.web.repository'
+import { AdminWebRepository } from '../repositories/admin-web-repository'
 
 @Injectable([AdminWebRepository])
 export class AdminRegisterUseCase implements UseCase<RegisterParam, AdminModel> {

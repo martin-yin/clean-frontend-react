@@ -10,6 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@ant-design/pro-card": "^1.18.42",
     "@reduxjs/toolkit": "^1.8.0",
     "antd": "^4.19.2",
     "axios": "^0.26.1",

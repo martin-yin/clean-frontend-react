@@ -1,17 +1,40 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { Avatar, Dropdown, Menu, Select } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { navMenuProjetListAdapter } from '../../../../domain/project/application/navmenu-projectlist-adapter'
+import { InjectFactoryGet } from '../../../../code/decorator'
 import { ProjectModel } from '../../../../domain/project/model/project.model'
+import { GetProjectListUseCase } from '../../../../domain/project/usecase/get-project-list-usercase'
 import { useAppState } from '../../../../stores'
+import { setMonitorId, setMonitorIdAndProject } from '../../../../stores/app.store'
+import { useHookTools } from '../../../../utils/toolhook'
 
 const { Option } = Select
 
 const ProjectListRender: FC = () => {
   const { projectList, monitorId } = useAppState(state => state.appsotre)
-  const setActiveMonitorId = navMenuProjetListAdapter(projectList)
+  const { navigate, storeDispatch } = useHookTools()
+  const getProjectList = InjectFactoryGet<GetProjectListUseCase>(GetProjectListUseCase)
+  useEffect(() => {
+    ;(async () => {
+      if (projectList.length === 0) {
+        const { monitorId, projectList } = await getProjectList.execute()
+        storeDispatch(
+          setMonitorIdAndProject({
+            monitorId,
+            projectList
+          })
+        )
+      }
+    })()
+  }, [])
+
+  const setActiveMonitorId = (value: string) => {
+    storeDispatch(setMonitorId(value))
+    navigate('/user')
+  }
+
   return (
     <div>
       <Select
