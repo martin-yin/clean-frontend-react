@@ -1,13 +1,24 @@
-import { UseCase } from '../../../code/base/use.case'
-import { Injectable } from '../../../code/decorator'
-import { AdminModel, RegisterParam } from '../model/admin.model'
-import { AdminWebRepository } from '../repositories/admin-web-repository'
+import { RegisterParam } from '../model/admin.model'
+import { useNavigate } from 'react-router-dom'
+import { useAppDispatch } from '../../../stores'
+import { setUserInfo } from '../../../stores/app.store'
+import { AdminWebRepositorys } from '../repositories/admin-web-repository'
+import { useWebMessageServicec } from '../../../code/service/web-message-service'
+import { IMessage } from '../../../code/base/message'
 
-@Injectable([AdminWebRepository])
-export class AdminRegisterUseCase implements UseCase<RegisterParam, AdminModel> {
-  constructor(private adminRepository: AdminWebRepository) {}
+export const AdminRegisterUseCase = () => {
+  const storeDispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const message: IMessage = useWebMessageServicec()
 
-  async execute(params: RegisterParam): Promise<AdminModel> {
-    return await this.adminRepository.register(params)
+  const adminRegister = async (params: RegisterParam) => {
+    const { data, code, msg } = await AdminWebRepositorys.register(params)
+    if (code == 200) {
+      storeDispatch(setUserInfo(data))
+      navigate('/')
+    } else {
+      return message.error(msg)
+    }
   }
+  return { adminRegister }
 }

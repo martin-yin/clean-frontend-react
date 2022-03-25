@@ -7,6 +7,7 @@ const store = configureStore({
 })
 
 type AppState = ReturnType<typeof rootReducer>
+
 type AppDispatch = typeof store.dispatch
 
 export const useAppDispatch = () => useDispatch<AppDispatch>()

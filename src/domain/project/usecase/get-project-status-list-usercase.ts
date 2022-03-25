@@ -1,14 +1,19 @@
-import { UseCase } from '../../../code/base/use.case'
-import { Injectable } from '../../../code/decorator'
-import { ProjectRepository } from '../model/project.entity'
-import { ProjectStatusModel } from '../model/project.model'
+import { IMessage } from '../../../code/base/message'
+import { useWebMessageServicec } from '../../../code/service/web-message-service'
 import { ProjectWebRepository } from '../repositories/project-web-repository'
 
-@Injectable([ProjectWebRepository])
-export class GetProjectStatusListUseCase implements UseCase<void, Array<ProjectStatusModel>> {
-  constructor(private projectRepository: ProjectRepository) {}
-  async execute(): Promise<Array<ProjectStatusModel>> {
-    const projectStatusList = await this.projectRepository.getProjectStatusList()
-    return projectStatusList
+export const GetProjectStatusListUseCase = () => {
+  const message: IMessage = useWebMessageServicec()
+
+  const getProjectStatusList = async () => {
+    const { data, code, msg } = await ProjectWebRepository.getProjectStatusList()
+    if (code === 200) {
+      return data
+    } else {
+      message.error(msg)
+      return []
+    }
   }
+
+  return getProjectStatusList
 }

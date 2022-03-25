@@ -1,19 +1,23 @@
-import { WebMessage } from '../../../code/base/message'
-import { UseCase } from '../../../code/base/use.case'
-import { Injectable } from '../../../code/decorator'
-import { AdminModel, LoginParam } from '../model/admin.model'
-import { AdminWebRepository } from '../repositories/admin-web-repository'
+import { useNavigate } from 'react-router-dom'
+import { useWebMessageServicec } from '../../../code/service/web-message-service'
+import { useAppDispatch } from '../../../stores'
+import { setUserInfo } from '../../../stores/app.store'
+import { LoginParam } from '../model/admin.model'
+import { AdminWebRepositorys } from '../repositories/admin-web-repository'
 
-@Injectable([AdminWebRepository])
-export class AdminLoginUseCase implements UseCase<LoginParam, AdminModel> {
-  constructor(private adminRepository: AdminWebRepository) {}
-  async execute(params: LoginParam): Promise<AdminModel> {
-    const message = new WebMessage()
-    const data = await this.adminRepository.login(params)
-    if (data) {
-      message.success('登录成功！')
-      return data
+export const AdminLoginUseCase = () => {
+  const storeDispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const message = useWebMessageServicec()
+
+  const adminLogin = async (params: LoginParam) => {
+    const { data, code, msg } = await AdminWebRepositorys.login(params)
+    if (code == 200) {
+      storeDispatch(setUserInfo(data))
+      navigate('/')
+    } else {
+      return message.error(msg)
     }
-    return {} as AdminModel
   }
+  return { adminLogin }
 }

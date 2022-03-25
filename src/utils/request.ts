@@ -57,7 +57,7 @@ service.interceptors.response.use(
   }
 )
 
-export type Response<T = any> = {
+export type IResponse<T = any> = {
   code: number
   msg: string
   data: T
@@ -72,7 +72,7 @@ export const request = <T>(
   url: string,
   data = {},
   config?: AxiosRequestConfig
-): Promise<Response<T>> => {
+): Promise<IResponse<T>> => {
   const prefix = 'http://127.0.0.1:8889'
 
   if (!notMonitorId.includes(url)) {

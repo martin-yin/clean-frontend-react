@@ -1,5 +1,5 @@
 import { Layout } from 'antd'
-import React, { FC, Suspense, useCallback, useEffect, useState } from 'react'
+import React, { FC, Suspense, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import NavMenu from './components/components/navMenu'

@@ -1,20 +1,23 @@
-import WebStorage from '../../../code/base/storage '
-import { UseCase } from '../../../code/base/use.case'
-import { Injectable } from '../../../code/decorator'
-import { ProjectRepository } from '../model/project.entity'
-import { ProjectListAndMonitorId } from '../model/project.model'
+import { IMessage } from '../../../code/base/message'
+import { IStorage } from '../../../code/base/storage '
+import { useWebMessageServicec } from '../../../code/service/web-message-service'
+import { useWebStorage } from '../../../code/service/web-storage-service'
 import { ProjectWebRepository } from '../repositories/project-web-repository'
 
-@Injectable([ProjectWebRepository])
-export class GetProjectListUseCase implements UseCase<void, ProjectListAndMonitorId> {
-  constructor(private projectRepository: ProjectRepository) {}
+export const GetProjectListUseCase = () => {
+  const message: IMessage = useWebMessageServicec()
+  const storage: IStorage = useWebStorage()
 
-  async execute(): Promise<ProjectListAndMonitorId> {
-    const projectList = await this.projectRepository.getProjects()
-    const storage: WebStorage = new WebStorage()
-    // Todo: 1.判断 monitorId 是否存在与 projectList中
-    // 2. 如果当前业务需要整合多个 usecase, 那么是不是可以向上提一层application ?
-    const monitorId = storage.getItem('monitorId') ? storage.getItem('monitorId') : projectList[0]?.monitorId
-    return { monitorId, projectList }
+  const projectList = async () => {
+    const { data, code, msg } = await ProjectWebRepository.getProjects()
+    if (code === 200) {
+      const monitorId = storage.getItem('monitorId') ? storage.getItem('monitorId') : data[0]?.monitorId
+      return { monitorId, data }
+    } else {
+      message.error(msg)
+      return { monitorId: 0, data: [] }
+    }
   }
+
+  return projectList
 }

@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux'
+import store from '.'
 import { AdminModel } from '../domain/user/model/admin.model'
 
 const initialState = {
@@ -27,7 +29,7 @@ const appStore = createSlice({
     setMonitorIdAndProject(state, action: PayloadAction<any>) {
       localStorage.setItem('monitorId', action.payload.monitorId)
       state.monitorId = action.payload.monitorId
-      state.projectList = action.payload.projectList
+      state.projectList = action.payload.data
     },
     setProjectList(state, action: PayloadAction<any>) {
       state.projectList = action.payload
