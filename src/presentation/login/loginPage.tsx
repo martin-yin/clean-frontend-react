@@ -3,8 +3,8 @@ import { Input, Form, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { Tabs } from 'antd'
 import './index.less'
-import { useAdminRegisterAdapter } from '../../domain/user/adapter/admin-register-adapter'
-import { useAdminLoginAdapter } from '../../domain/user/adapter/admin-login-adapter'
+import { useAdminRegisterAdapter } from '../../domain/admin/adapter/admin-register-adapter'
+import { useAdminLoginAdapter } from '../../domain/admin/adapter/admin-login-adapter'
 const { TabPane } = Tabs
 
 const LoginPage: FC = () => {

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import store from '.'
-import { AdminModel } from '../domain/user/model/admin.model'
+import { AdminModel } from '../domain/admin/model/admin.model'
 
 const initialState = {
   menuKeys: {

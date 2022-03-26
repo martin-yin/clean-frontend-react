@@ -1,5 +1,7 @@
 import axios, { Axios, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { message } from 'antd'
+import { CasedProperties } from '../domain/user/model/user.model'
+import _ from 'lodash'
 const service = axios.create({
   timeout: 60000
 })
@@ -83,17 +85,37 @@ export const request = <T>(
   //   url = prefix + url
   // }
 
+  const postData = toLineData(data)
+
   url = prefix + url
   if (method === 'post') {
-    return service.post(url, data, config)
+    return service.post(url, postData, config)
   } else if (method === 'put') {
-    return service.put(url, data)
+    return service.put(url, postData)
   } else if (method === 'delete') {
     return service.delete(url)
   } else {
     return service.get(url, {
-      params: data,
+      params: postData,
       ...config
     })
   }
+}
+
+export const toLineData = (data: any) => {
+  const lineData: any = {}
+  for (const k of Object.keys(data)) {
+    const lineK = k.replace(/([A-Z])/g, '_$1').toLowerCase()
+    lineData[lineK] = data[k]
+  }
+  return lineData
+}
+
+export const toUpperCaseData = (data: any) => {
+  const lineData: any = {}
+  for (const k of Object.keys(data)) {
+    const lineK = _.camelCase(k)
+    lineData[lineK] = data[k]
+  }
+  return lineData
 }

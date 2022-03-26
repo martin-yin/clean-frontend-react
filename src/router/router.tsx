@@ -23,7 +23,7 @@ export const RenderRouter: FC = () => {
           children: [
             { path: '', element: <RouteWrapper element={lazy(() => import('../presentation/home/homePage'))} /> }
           ]
-        }
+        },
         // {
         //   path: 'system',
         //   element: <OutletLayout />,
@@ -32,17 +32,17 @@ export const RenderRouter: FC = () => {
         //     { path: 'team', element: <RouteWrapper element={lazy(() => import('../view/team/teamPage'))} /> }
         //   ]
         // },
-        // {
-        //   path: 'user',
-        //   element: <OutletLayout />,
-        //   children: [
-        //     { path: '', element: <RouteWrapper element={lazy(() => import('../view/user/userPage'))} /> },
-        //     {
-        //       path: 'detail/:session_id/:user_id',
-        //       element: <RouteWrapper element={lazy(() => import('../view/user/useDetailPage'))} />
-        //     }
-        //   ]
-        // },
+        {
+          path: 'user',
+          element: <OutletLayout />,
+          children: [
+            { path: '', element: <RouteWrapper element={lazy(() => import('../presentation/user/userPage'))} /> },
+            {
+              path: 'detail/:session_id/:user_id',
+              element: <RouteWrapper element={lazy(() => import('../presentation/user/useDetailPage'))} />
+            }
+          ]
+        }
         // {
         //   path: '/jsErr',
         //   element: <OutletLayout />,

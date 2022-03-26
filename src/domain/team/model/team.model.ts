@@ -1,5 +1,5 @@
 import { ProjectModel } from '../../project/model/project.model'
-import { AdminModel } from '../../user/model/admin.model'
+import { AdminModel } from '../../admin/model/admin.model'
 
 export interface TeamModel {
   admin_id: string
