@@ -1,14 +1,15 @@
-import { UseCase } from '../../../code/base/use.case'
-import { Injectable } from '../../../code/decorator'
-import { TeamRepository } from '../model/team.entity'
-import { CreateTeamParams, TeamModel } from '../model/team.model'
-import { TeamWebRepository } from '../repositories/team.web.repository'
+import { IMessage } from '../../../code/base/message'
+import { useWebMessageServicec } from '../../../code/service/web-message-service'
+import { CreateTeamParams } from '../model/team.model'
+import { teamWebRepository } from '../repositories/team-web-repository'
 
-@Injectable([TeamWebRepository])
-export class CreateTeamUseCase implements UseCase<CreateTeamParams, number> {
-  constructor(private teamRepository: TeamRepository) {}
-
-  async execute(params: CreateTeamParams): Promise<number> {
-    return await this.teamRepository.createTeam(params)
+export const createTeamUseCase = async (params: CreateTeamParams) => {
+  const message: IMessage = useWebMessageServicec()
+  const { data, code, msg } = await teamWebRepository.createTeam(params)
+  if (code == 200) {
+    return data
+  } else {
+    message.error(msg)
+    return null
   }
 }

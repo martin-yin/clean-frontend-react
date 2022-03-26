@@ -31,7 +31,19 @@ export class ProjectWebRepositoryMapper extends Mapper<ProjectEntity, ProjectMod
       resourcesError: param.resources_error,
       uv: param.uv,
       projectName: param.project_name,
-      monitorId: param.monitor_id
+      monitorId: param.monitor_id,
+      rate: getHealthyRate(param)
     }
   }
+}
+
+const getHealthyRate = (detail: ProjectStatusEntity) => {
+  if (detail) {
+    if (detail.pv == 0) {
+      return 0
+    }
+    const { http_error, resources_error, js_error } = detail
+    return +(100 - http_error / 3 - resources_error / 3 - js_error / 3).toFixed(2)
+  }
+  return 0
 }

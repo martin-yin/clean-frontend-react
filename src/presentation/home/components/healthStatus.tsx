@@ -3,34 +3,20 @@ import { EditOutlined } from '@ant-design/icons'
 import PlusCircleOutlined from '@ant-design/icons/lib/icons/PlusCircleOutlined'
 import { Progress, Space, Tooltip } from 'antd'
 import React, { FC } from 'react'
-import { useDispatch } from 'react-redux'
 import ProCard from '@ant-design/pro-card'
-import { useNavigate } from 'react-router'
 import { setMonitorId } from '../../../stores/app.store'
 import { ProjectStatusModel } from '../../../domain/project/model/project.model'
+import { useHookTools } from '../../../utils/toolhook'
 
 interface HealthStatusItemProps {
   detail: ProjectStatusModel
 }
 
 const HealthStatusItem: FC<HealthStatusItemProps> = ({ detail }) => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const { navigate, storeDispatch } = useHookTools()
   const projectToUrl = (url: string, monitorId: string) => {
-    dispatch(setMonitorId(monitorId))
+    storeDispatch(setMonitorId(monitorId))
     navigate(url)
-  }
-
-  // 计算健康状态
-  const getHealthyRate = (detail: ProjectStatusModel) => {
-    if (detail) {
-      if (detail.pv == 0) {
-        return 0
-      }
-      const { httpError, resourcesError, jsError } = detail
-      return +(100 - httpError / 3 - resourcesError / 3 - jsError / 3).toFixed(2)
-    }
-    return 0
   }
 
   return (
@@ -71,7 +57,7 @@ const HealthStatusItem: FC<HealthStatusItemProps> = ({ detail }) => {
               type="circle"
               style={{ marginLeft: '20px', marginTop: '10px' }}
               width={80}
-              percent={getHealthyRate(detail)}
+              percent={detail.rate}
               format={percent => `${percent}`}
             />
           </div>

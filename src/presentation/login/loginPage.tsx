@@ -3,13 +3,14 @@ import { Input, Form, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { Tabs } from 'antd'
 import './index.less'
-import { AdminLoginUseCase } from '../../domain/user/usecase/admin-login-usecase'
-import { AdminRegisterUseCase } from '../../domain/user/usecase/admin-register-usecase'
+import { useAdminRegisterAdapter } from '../../domain/user/adapter/admin-register-adapter'
+import { useAdminLoginAdapter } from '../../domain/user/adapter/admin-login-adapter'
 const { TabPane } = Tabs
 
 const LoginPage: FC = () => {
-  const { adminLogin } = AdminLoginUseCase()
-  const { adminRegister } = AdminRegisterUseCase()
+  const { adminLogin } = useAdminLoginAdapter()
+
+  const { adminRegister } = useAdminRegisterAdapter()
 
   return (
     <div className={'login_container mx-auto'}>

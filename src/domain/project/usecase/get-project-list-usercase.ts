@@ -1,23 +1,17 @@
 import { IMessage } from '../../../code/base/message'
-import { IStorage } from '../../../code/base/storage '
 import { useWebMessageServicec } from '../../../code/service/web-message-service'
-import { useWebStorage } from '../../../code/service/web-storage-service'
+import { ProjectWebRepositoryMapper } from '../repositories/mapper/project-web-repository.mapper'
 import { ProjectWebRepository } from '../repositories/project-web-repository'
 
-export const GetProjectListUseCase = () => {
+export const getProjectListUseCase = async () => {
   const message: IMessage = useWebMessageServicec()
-  const storage: IStorage = useWebStorage()
+  const mapper = new ProjectWebRepositoryMapper()
 
-  const projectList = async () => {
-    const { data, code, msg } = await ProjectWebRepository.getProjects()
-    if (code === 200) {
-      const monitorId = storage.getItem('monitorId') ? storage.getItem('monitorId') : data[0]?.monitorId
-      return { monitorId, data }
-    } else {
-      message.error(msg)
-      return { monitorId: 0, data: [] }
-    }
+  const { data, code, msg } = await ProjectWebRepository.getProjects()
+  if (code === 200) {
+    return data.map(item => mapper.mapFrom(item))
+  } else {
+    message.error(msg)
+    return []
   }
-
-  return projectList
 }

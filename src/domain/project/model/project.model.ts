@@ -18,6 +18,7 @@ export interface ProjectStatusModel extends ProjectModel {
   uv: number
   projectName: string
   monitorId: string
+  rate: number
 }
 
 export interface ProjectListAndMonitorId {

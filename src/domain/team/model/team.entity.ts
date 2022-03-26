@@ -1,8 +1,9 @@
+import { IResponse } from '../../../utils/request'
 import { CreateTeamParams, TeamModel } from './team.model'
 
 export abstract class TeamRepository {
-  abstract getTeamList(): Promise<Array<TeamModel>>
-  abstract createTeam(param: CreateTeamParams): Promise<number>
+  abstract getTeamList(): Promise<IResponse<TeamModel[]>>
+  abstract createTeam(param: CreateTeamParams): Promise<IResponse<TeamModel>>
 }
 
 export interface TeamEntity {

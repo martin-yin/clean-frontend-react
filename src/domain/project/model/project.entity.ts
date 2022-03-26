@@ -3,9 +3,9 @@ import { CreateProjectParams, ProjectModel, ProjectStatusModel } from './project
 
 export abstract class ProjectRepository {
   abstract getProject(): Promise<IResponse<ProjectModel>>
-  abstract getProjects(): Promise<IResponse<Array<ProjectModel>>>
-  abstract createProject(param: CreateProjectParams): Promise<IResponse<ProjectModel>>
-  abstract getProjectStatusList(): Promise<IResponse<Array<ProjectStatusModel>>>
+  abstract getProjects(): Promise<IResponse<Array<ProjectEntity>>>
+  abstract createProject(param: CreateProjectParams): Promise<IResponse<ProjectEntity>>
+  abstract getProjectStatusList(): Promise<IResponse<Array<ProjectStatusEntity>>>
   abstract delProject(id: number): Promise<IResponse<string>>
 }
 

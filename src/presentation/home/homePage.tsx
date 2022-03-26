@@ -1,27 +1,16 @@
 import { Form } from 'antd'
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
+import { useCreateProjectAdapter } from '../../domain/project/adapter/create-project-adpater'
+import { useGetProjectStatusListAdapter } from '../../domain/project/adapter/get-project-status-list-adapter'
 import { ProjectStatusModel } from '../../domain/project/model/project.model'
-import { CreateProjectUseCase } from '../../domain/project/usecase/create-project-usercase'
-import { GetProjectStatusListUseCase } from '../../domain/project/usecase/get-project-status-list-usercase'
-import { useFormValidateFields } from '../../utils/toolhook'
 import CreateProject from './components/createProject'
 import { HealthStatus } from './components/healthStatus'
 import './index.less'
 const HomePage: FC = () => {
   const [visible, setVisible] = useState(false)
   const [form] = Form.useForm()
-  const formValidateFields = useFormValidateFields(form)
-  const [projectStatusList, setProjectStatusList] = useState<Array<ProjectStatusModel>>([])
-
-  const createProject = CreateProjectUseCase(formValidateFields)
-  const getProjectStatusList = GetProjectStatusListUseCase()
-
-  useEffect(() => {
-    ;(async () => {
-      const data = await getProjectStatusList()
-      setProjectStatusList(data)
-    })()
-  }, [])
+  const { createProject } = useCreateProjectAdapter(form)
+  const { projectStatusList } = useGetProjectStatusListAdapter()
 
   const handleCloseModal = useCallback(() => {
     form.resetFields()

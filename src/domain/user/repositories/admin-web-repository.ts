@@ -2,7 +2,7 @@ import { IResponse, request } from '../../../utils/request'
 import { AdminRepository } from '../model/admin.entity'
 import { AdminModel, LoginParam, RegisterParam } from '../model/admin.model'
 
-export const AdminWebRepositorys: AdminRepository = {
+export const adminWebRepositorys: AdminRepository = {
   async login(param: LoginParam): Promise<IResponse<AdminModel>> {
     const data = await request<AdminModel>('post', '/admin/adminLogin', param)
     return data

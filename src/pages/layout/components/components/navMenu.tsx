@@ -3,8 +3,8 @@ import { Avatar, Dropdown, Menu, Select } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
 import React, { FC, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useGetProjectListAdapter } from '../../../../domain/project/adapter/get-project-list-adpater'
 import { ProjectModel } from '../../../../domain/project/model/project.model'
-import { GetProjectListUseCase } from '../../../../domain/project/usecase/get-project-list-usercase'
 import { useAppState } from '../../../../stores'
 import { setMonitorId, setMonitorIdAndProject } from '../../../../stores/app.store'
 import { useHookTools } from '../../../../utils/toolhook'
@@ -13,29 +13,7 @@ const { Option } = Select
 
 const ProjectListRender: FC = () => {
   const { projectList, monitorId } = useAppState(state => state.appsotre)
-  const { navigate, storeDispatch } = useHookTools()
-  const getProjectList = GetProjectListUseCase()
-  useEffect(() => {
-    ;(async () => {
-      if (projectList.length === 0) {
-        const { monitorId, data } = await getProjectList()
-
-        console.log(monitorId, data)
-        storeDispatch(
-          setMonitorIdAndProject({
-            monitorId,
-            data
-          })
-        )
-      }
-    })()
-  }, [])
-
-  const setActiveMonitorId = (value: string) => {
-    storeDispatch(setMonitorId(value))
-    navigate('/user')
-  }
-
+  const { setActiveMonitorId } = useGetProjectListAdapter()
   return (
     <div>
       <Select

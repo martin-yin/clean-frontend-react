@@ -1,23 +1,15 @@
-import { useNavigate } from 'react-router-dom'
 import { useWebMessageServicec } from '../../../code/service/web-message-service'
-import { useAppDispatch } from '../../../stores'
-import { setUserInfo } from '../../../stores/app.store'
+import { adminWebRepositorys } from '../repositories/admin-web-repository'
 import { LoginParam } from '../model/admin.model'
-import { AdminWebRepositorys } from '../repositories/admin-web-repository'
+import { IMessage } from '../../../code/base/message'
 
-export const AdminLoginUseCase = () => {
-  const storeDispatch = useAppDispatch()
-  const navigate = useNavigate()
-  const message = useWebMessageServicec()
-
-  const adminLogin = async (params: LoginParam) => {
-    const { data, code, msg } = await AdminWebRepositorys.login(params)
-    if (code == 200) {
-      storeDispatch(setUserInfo(data))
-      navigate('/')
-    } else {
-      return message.error(msg)
-    }
+export const adminLoginUseCase = async (params: LoginParam) => {
+  const message: IMessage = useWebMessageServicec()
+  const { data, code, msg } = await adminWebRepositorys.login(params)
+  if (code == 200) {
+    return data
+  } else {
+    message.error(msg)
+    return null
   }
-  return { adminLogin }
 }
