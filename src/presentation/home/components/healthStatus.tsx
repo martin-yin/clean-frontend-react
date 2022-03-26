@@ -22,8 +22,8 @@ const HealthStatusItem: FC<HealthStatusItemProps> = ({ detail }) => {
   return (
     <div className="project-item">
       <div className="item-title">
-        <div className="project-title-name flex-grow-1">{detail.projectName}</div>
-        <div className="project-title-operation flex-grow-1">
+        <div className="project-title-name flex-1">{detail.projectName}</div>
+        <div className="project-title-operation flex-1">
           <Space size={20}>
             <p onClick={() => projectToUrl('/system/project', detail.monitorId)}>
               <Tooltip placement="topLeft" title="修改配置">

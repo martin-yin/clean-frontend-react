@@ -17,7 +17,7 @@ export const useWebRepository: UserRepository = {
     const data = await request<UserEntity>('get', `/communal/user?id=${id}`)
     return data
   },
-  async getUserActions(params: {
+  async getUserActionList(params: {
     session_id: string
     page: number
     limit: number
@@ -25,7 +25,7 @@ export const useWebRepository: UserRepository = {
     const data = await request<UserActionListEntity>('get', '/communal/userActions', params)
     return data
   },
-  async getUserActionStatistics(params: { session_id: string }): Promise<IResponse<UserActionStatisticListEntity>> {
+  async getUserActionStatisticList(params: { session_id: string }): Promise<IResponse<UserActionStatisticListEntity>> {
     const data = await request<UserActionStatisticListEntity>('get', '/communal/userActionStatistics', params)
     return data
   }

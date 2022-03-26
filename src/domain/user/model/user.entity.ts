@@ -3,9 +3,13 @@ import { GetUserListParams } from './user.model'
 
 export interface UserRepository {
   getUserList(params: GetUserListParams): Promise<IResponse<UserListEntity>>
-  getUserActions(params: { session_id: string; page: number; limit: number }): Promise<IResponse<UserActionListEntity>>
+  getUserActionList(params: {
+    session_id: string
+    page: number
+    limit: number
+  }): Promise<IResponse<UserActionListEntity>>
   getUser(id: string): Promise<IResponse<UserEntity>>
-  getUserActionStatistics(params: { session_id: string }): Promise<IResponse<UserActionStatisticListEntity>>
+  getUserActionStatisticList(params: { session_id: string }): Promise<IResponse<UserActionStatisticListEntity>>
 }
 
 export interface UserActionDetailBase {
@@ -37,9 +41,16 @@ export interface UserEntity extends UserActionDetailBase {
 
 export type UserListEntity = Array<UserEntity>
 
+export type UserActionEntity = Record<
+  'action_type' | 'happen_day' | 'happen_time' | 'monitor_id' | 'session_id' | 'user_id',
+  string
+> & {
+  action_detail: string
+}
+
 export interface UserActionListEntity {
   total: number
-  user_actions_list: UserListEntity
+  user_actions_list: Array<UserActionEntity>
 }
 
 export interface UserActionStatisticEntity {
@@ -47,4 +58,11 @@ export interface UserActionStatisticEntity {
   total: number
 }
 
-export type UserActionStatisticListEntity = Array<UserActionStatisticEntity>
+export type UserActionStatisticModel = UserActionStatisticEntity
+
+export type UserActionStatisticListEntity = Array<UserActionStatisticModel>
+
+export type PAGE_LOAD = 'load_type'
+export type HTTP_LOG = 'http_url' | 'request_text' | 'response_text'
+export type RESOURCE = 'element_type' | 'source_url'
+export type OPERATION = 'tag_name' | 'inner_text' | 'class_name'

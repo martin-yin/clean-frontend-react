@@ -3,7 +3,11 @@
   padding: 24px;
 }
 
-/*
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .ant-layout {
   min-width: 1600px;
 }
@@ -30,7 +34,6 @@ a {
   border: none !important;
 }
 
-
 .flex-item {
   flex-basis: 50px;
   text-align: right;
@@ -44,19 +47,19 @@ a {
   color: #4395ff;
 }
 
-.action_time_line_image {
-  width: 50px;
-  height: 50px;
-}
-
 .userActionIcon {
   width: 60px;
   height: 60px;
 }
 
 .over-hidde {
-  overflow: hidden; 
-  white-space: nowrap; 
+  overflow: hidden;
+  white-space: nowrap;
   width: 450px;
-  text-overflow: ellipsis; 
-}*/
+  text-overflow: ellipsis;
+}
+
+.action_time_line_image {
+  width: 50px;
+  height: 50px;
+}

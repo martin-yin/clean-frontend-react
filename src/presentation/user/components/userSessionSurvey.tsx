@@ -8,7 +8,7 @@ import {
   PageViewIcon,
   PageResourceIcon
 } from '../../../assets'
-import { UserModel } from '../../../domain/user/model/user.model'
+import { getUserAdpter } from '../../../domain/user/adapter/get-user-adapter'
 import { ListLable, ListLableItem } from '../../../features/listLable/listLable'
 
 const USERACTIONICONS: {
@@ -22,12 +22,9 @@ const USERACTIONICONS: {
   JS_ERROR: { icon: PageJsErrorIcon, text: '次JS异常' }
 }
 
-interface SessionSurveyProps {
-  sessionSurvey: UserModel
-  behavioStatistics: any
-}
+const UserSessionSurvey = React.memo(() => {
+  const { user, userActionStatisticList } = getUserAdpter()
 
-const SessionSurvey = React.memo<SessionSurveyProps>(({ sessionSurvey, behavioStatistics }) => {
   const userStatisticsRender = useCallback((key: number, item: any) => {
     const action = USERACTIONICONS[item.action_type]
     return (
@@ -47,25 +44,26 @@ const SessionSurvey = React.memo<SessionSurveyProps>(({ sessionSurvey, behavioSt
 
   return (
     <div className="user__survey">
-      {sessionSurvey && (
+      {user && (
         <Card title="用户信息">
           <Space size={60}>
             <ListLable>
-              <ListLableItem label="设备名称">{`${sessionSurvey.device} / ${sessionSurvey.device_type}`}</ListLableItem>
+              <ListLableItem label="设备名称">{`${user.device} / ${user.deviceType}`}</ListLableItem>
               <ListLableItem label="浏览器">
-                {sessionSurvey.browser}:{sessionSurvey.browser_version}
+                {user.browser}:{user.browserVersion}
               </ListLableItem>
               <ListLableItem label="系统版本">
-                {sessionSurvey.os}: {sessionSurvey.os_version}
+                {user.os}: {user.osVersion}
               </ListLableItem>
-              <ListLableItem label="IP地址">{sessionSurvey.ip}</ListLableItem>
-              <ListLableItem label="所在地区">{`${sessionSurvey.nation}${sessionSurvey.province}${sessionSurvey.city}${sessionSurvey.district}`}</ListLableItem>
+              <ListLableItem label="IP地址">{user.ip}</ListLableItem>
+              <ListLableItem label="所在地区">{`${user.nation}${user.province}${user.city}${user.district}`}</ListLableItem>
             </ListLable>
             <div className="user__survey_statistics">
               <Space split={<Divider type="vertical" />} align="center" size={60}>
-                {behavioStatistics.map((item: any, key: number) => {
-                  return userStatisticsRender(key, item)
-                })}
+                {userActionStatisticList &&
+                  userActionStatisticList.map((item: any, key: number) => {
+                    return userStatisticsRender(key, item)
+                  })}
               </Space>
             </div>
           </Space>
@@ -75,4 +73,4 @@ const SessionSurvey = React.memo<SessionSurveyProps>(({ sessionSurvey, behavioSt
   )
 })
 
-export default SessionSurvey
+export default UserSessionSurvey
