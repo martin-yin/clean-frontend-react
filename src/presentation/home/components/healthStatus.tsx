@@ -61,7 +61,7 @@ const HealthStatusItem: FC<HealthStatusItemProps> = ({ detail }) => {
               format={percent => `${percent}`}
             />
           </div>
-          <div className="flex-grow-1 health-rate">
+          <div className="flex-1 health-rate">
             <span>
               <label></label> JS报错率：{detail?.jsError}%
             </span>

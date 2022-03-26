@@ -2,7 +2,7 @@ import { Timeline } from 'antd'
 import React, { FC, useEffect, useState } from 'react'
 import { UserActionModel } from '../../../domain/user/model/user.model'
 import { getTimeHHMM } from '../../../utils'
-import { UseActionQuotaListProxy } from '../../../utils/useActionQuotaProxy'
+import { UseActionQuotaListProxy } from '../hook/useActionQuotaProxy'
 
 interface BehaviorTimeLineItemProps {
   key: number
@@ -12,7 +12,6 @@ interface BehaviorTimeLineItemProps {
 }
 
 const BehaviorTimeLineItem: FC<BehaviorTimeLineItemProps> = ({ key, item, activeBehavior, activeId }) => {
-  console.log(item.actionDetail, '+=======')
   const [itemData, setItemData] = useState({
     itemIcon: () => {
       return <></>
@@ -50,10 +49,10 @@ const BehaviorTimeLineItem: FC<BehaviorTimeLineItemProps> = ({ key, item, active
           onClick={() => activeBehavior(item)}
         >
           <div className="flex">
-            <div className="flex-grow-1">
+            <div className="flex-1">
               <p className="over-hidde">{itemData.itemTitle}</p>
             </div>
-            <div className="flex-grow-0 flex-item">{getTimeHHMM(item.happenTime)}</div>
+            <div className="flex-0 flex-item">{getTimeHHMM(item.happenTime)}</div>
           </div>
           <div>{itemData.itemContent}</div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tag } from 'antd'
-import { ListLableItem } from '../features/listLable/listLable'
-import { RESOURCE, UserActionType, OPERATIONIF, HTTP_LOGIF } from '../domain/user/model/user.model'
+import { ListLableItem } from '../../../features/listLable/listLable'
+import { HTTP_LOGIF, OPERATIONIF, RESOURCE, UserActionType } from '../interface'
 
 const PERFORMANCE = (detail: Record<'load_type', string>): JSX.Element => (
   <ListLableItem label="加载方式">{detail.load_type}</ListLableItem>

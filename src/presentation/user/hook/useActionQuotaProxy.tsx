@@ -6,8 +6,9 @@ import {
   PageViewIcon,
   PageResourceIcon,
   PageJsErrorIcon
-} from '../assets'
-import { UserActionModel, UserActionQuota, UserActionQuotaType } from '../domain/user/model/user.model'
+} from '../../../assets'
+import { UserActionModel } from '../../../domain/user/model/user.model'
+import { UserActionQuota, UserActionQuotaType } from '../interface'
 
 const EMPTY = (): UserActionQuota => {
   return {
