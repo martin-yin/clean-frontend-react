@@ -7,7 +7,13 @@ import {
   PageResourceIcon,
   PageJsErrorIcon
 } from '../../../assets'
-import { UserActionModel } from '../../../domain/user/model/user.model'
+import {
+  UserActionHtppLog,
+  UserActionJsError,
+  UserActionOperAtion,
+  UserActionPageLoad,
+  UserActionResourceError
+} from '../../../domain/user/model/user.model'
 import { UserActionQuota, UserActionQuotaType } from '../interface'
 
 const EMPTY = (): UserActionQuota => {
@@ -31,22 +37,16 @@ const UserActionQuotaRender = (img: string, title: string, content: string): Use
 }
 
 const UserActionQuotaList: UserActionQuotaType = {
-  PERFORMANCE: (item: UserActionModel) =>
-    UserActionQuotaRender(PageLoadIcon, '页面浏览', `页面URL: ${item.actionDetail.pageUrl}`),
-  HTTP_LOG: (item: UserActionModel) =>
-    UserActionQuotaRender(PageNetworkIcon, 'HTTP请求', `请求URL: ${item.actionDetail.httpUrl}`),
-  JS_ERROR: (item: UserActionModel) =>
-    UserActionQuotaRender(PageJsErrorIcon, `异常信息 ${1}`, `异常页面: ${item.actionDetail.pageUrl}`),
-  RESOURCE_ERROR: (item: UserActionModel) =>
-    UserActionQuotaRender(
-      PageResourceIcon,
-      `资源加载异常${item.actionDetail.elementType}`,
-      `资源URL: ${item.actionDetail.sourceUrl}`
-    ),
-  OPERATION: (item: UserActionModel) =>
-    UserActionQuotaRender(PageOperationIcon, '点击事件', `页面URL: ${item.actionDetail.pageUrl}`),
-  PAGE_VIEW: (item: UserActionModel) =>
-    UserActionQuotaRender(PageViewIcon, '页面浏览', `页面URL: ${item.actionDetail.pageUrl}`),
+  PERFORMANCE: (item: UserActionPageLoad) =>
+    UserActionQuotaRender(PageLoadIcon, '页面浏览', `页面URL: ${item.pageUrl}`),
+  HTTP_LOG: (item: UserActionHtppLog) => UserActionQuotaRender(PageNetworkIcon, 'HTTP请求', `请求URL: ${item.httpUrl}`),
+  JS_ERROR: (item: UserActionJsError) =>
+    UserActionQuotaRender(PageJsErrorIcon, `异常信息 ${item.messsage}`, `页面URL:${item.pageUrl}`),
+  RESOURCE_ERROR: (item: UserActionResourceError) =>
+    UserActionQuotaRender(PageResourceIcon, `资源加载异常: ${item.elementType}`, `资源URL: ${item.sourceUrl}`),
+  OPERATION: (item: UserActionOperAtion) =>
+    UserActionQuotaRender(PageOperationIcon, '点击事件', `页面URL: ${item.pageUrl}`),
+  PAGE_VIEW: (item: UserActionPageLoad) => UserActionQuotaRender(PageViewIcon, '页面浏览', `页面URL: ${item.pageUrl}`),
   EMPTY
 }
 

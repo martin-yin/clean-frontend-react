@@ -1,8 +1,5 @@
-import React, { createContext, SetStateAction, useContext, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { UserEntity } from '../../../domain/user/model/user.entity'
+import React, { createContext, useContext, useMemo, useState } from 'react'
 import {
-  CasedProperties,
   UserActionDetail,
   UserActionListModel,
   UserActionModel,

@@ -1,6 +1,5 @@
 import axios, { Axios, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { message } from 'antd'
-import { CasedProperties } from '../domain/user/model/user.model'
 import _ from 'lodash'
 const service = axios.create({
   timeout: 60000

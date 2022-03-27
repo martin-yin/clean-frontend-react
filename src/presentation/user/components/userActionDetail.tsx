@@ -2,6 +2,7 @@ import { Empty } from 'antd'
 import React, { useCallback } from 'react'
 import { UserActionDetail as UserActionDetailIF } from '../../../domain/user/model/user.model'
 import { ListLable, ListLableItem } from '../../../features/listLable/listLable'
+import { getTimeHHMM } from '../../../utils'
 import { useActionDetailListProxy } from '../hook/useActionProxy'
 import { useUserContext } from '../provider/userProvider'
 
@@ -19,7 +20,7 @@ const UserActionDetail = React.memo(() => {
             {`${detail.os} ${detail.osVersion}`}
           </ListLableItem>
           <ListLableItem label="浏览器">{`${detail.browser} ${detail.browserVersion}`}</ListLableItem>
-          <ListLableItem label="时间">{detail.happenTime}</ListLableItem>
+          <ListLableItem label="时间">{getTimeHHMM(detail.happenTime)}</ListLableItem>
           <ListLableItem label="语言">{detail.language}</ListLableItem>
           <ListLableItem label="vp">{detail.vp}</ListLableItem>
           <ListLableItem label="屏幕分辨率">{detail.screen}</ListLableItem>

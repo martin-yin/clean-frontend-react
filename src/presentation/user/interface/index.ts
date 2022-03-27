@@ -1,4 +1,4 @@
-import { UserActionDetail, UserActionModel } from '../../../domain/user/model/user.model'
+import { UserActionDetail } from '../../../domain/user/model/user.model'
 
 const userActionKey = [
   'PERFORMANCE',
@@ -13,7 +13,7 @@ export type UserActionKey = typeof userActionKey[number]
 
 export type UserActionType = Record<UserActionKey, (detail: UserActionDetail) => JSX.Element>
 
-export type UserActionQuotaType = Record<UserActionKey, (item: UserActionModel) => UserActionQuota>
+export type UserActionQuotaType = Record<UserActionKey, (item: UserActionDetail) => UserActionQuota>
 
 export interface UserActionQuota {
   icon: React.ReactNode
