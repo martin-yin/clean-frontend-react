@@ -1,10 +1,10 @@
 import { Card, Space, Tag } from 'antd'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { useGetUserListAdapter } from '../../domain/user/adapter/get-user-list-adapter'
-import { UserModel } from '../../domain/user/model/user.model'
-import FilterHeader from '../../features/filterHeader/filterHeader'
-import TableData from '../../features/tableData/tableData'
+import { useGetUserListAdapter } from '@/domain/user/adapter/get-user-list-adapter'
+import { UserModel } from '@/domain/user/model/user.model'
+import FilterHeader from '@/features/filterHeader/filterHeader'
+import TableData from '@/features/tableData/tableData'
 
 import './index.less'
 

@@ -1,7 +1,7 @@
+import { IMessage } from '@/code/base/message'
+import { useWebMessageServicec } from '@/code/service/web-message-service'
 import { RegisterParam } from '../model/admin.model'
 import { adminWebRepositorys } from '../repositories/admin-web-repository'
-import { useWebMessageServicec } from '../../../code/service/web-message-service'
-import { IMessage } from '../../../code/base/message'
 
 export const adminRegisterUseCase = async (params: RegisterParam) => {
   const message: IMessage = useWebMessageServicec()

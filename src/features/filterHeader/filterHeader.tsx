@@ -1,8 +1,8 @@
 import { Card, Space } from 'antd'
 import React, { FC } from 'react'
-import './index.less'
-import TimeRangPicker from './components/timeRangPicker'
 import FilterHeaderItem from './components/filterHeaderItem'
+import TimeRangPicker from './components/timeRangPicker'
+import './index.less'
 
 const FilterHeader: FC<any> = () => {
   return (

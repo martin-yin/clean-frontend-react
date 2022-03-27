@@ -1,6 +1,6 @@
-import { Mapper } from '../../../../code/base/mapper'
+import { Mapper } from '@/code/base/mapper'
 import { ProjectEntity, ProjectStatusEntity } from '../../model/project.entity'
-import { ProjectStatusModel, ProjectModel } from '../../model/project.model'
+import { ProjectModel, ProjectStatusModel } from '../../model/project.model'
 
 export class ProjectWebRepositoryMapper extends Mapper<ProjectEntity, ProjectModel> {
   mapFrom(param: ProjectEntity): ProjectModel {

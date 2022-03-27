@@ -1,5 +1,5 @@
-import axios, { Axios, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { message } from 'antd'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import _ from 'lodash'
 const service = axios.create({
   timeout: 60000

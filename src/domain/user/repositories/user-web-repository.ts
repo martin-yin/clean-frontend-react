@@ -1,4 +1,4 @@
-import { IResponse, request } from '../../../utils/request'
+import { IResponse, request } from '@/utils/request'
 import {
   UserActionListEntity,
   UserActionStatisticListEntity,

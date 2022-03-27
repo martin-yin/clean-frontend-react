@@ -1,15 +1,14 @@
+import { useAdminLoginAdapter } from '@/domain/admin/adapter/admin-login-adapter'
+import { useAdminRegisterAdapter } from '@/domain/admin/adapter/admin-register-adapter'
+import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import { Button, Form, Input, Tabs } from 'antd'
 import React, { FC } from 'react'
-import { Input, Form, Button } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import { Tabs } from 'antd'
 import './index.less'
-import { useAdminRegisterAdapter } from '../../domain/admin/adapter/admin-register-adapter'
-import { useAdminLoginAdapter } from '../../domain/admin/adapter/admin-login-adapter'
+
 const { TabPane } = Tabs
 
 const LoginPage: FC = () => {
   const { adminLogin } = useAdminLoginAdapter()
-
   const { adminRegister } = useAdminRegisterAdapter()
 
   return (

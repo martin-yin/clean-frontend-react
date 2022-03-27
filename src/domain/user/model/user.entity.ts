@@ -1,4 +1,4 @@
-import { IResponse } from '../../../utils/request'
+import { IResponse } from '@/utils/request'
 import { GetUserListParams } from './user.model'
 
 export interface UserRepository {

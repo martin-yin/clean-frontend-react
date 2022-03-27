@@ -1,4 +1,4 @@
-import { IResponse, request } from '../../../utils/request'
+import { IResponse, request } from '@/utils/request'
 import { ProjectEntity, ProjectRepository, ProjectStatusEntity } from '../model/project.entity'
 import { CreateProjectParams, ProjectModel } from '../model/project.model'
 

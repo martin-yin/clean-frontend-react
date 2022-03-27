@@ -4,9 +4,9 @@ import PlusCircleOutlined from '@ant-design/icons/lib/icons/PlusCircleOutlined'
 import { Progress, Space, Tooltip } from 'antd'
 import React, { FC } from 'react'
 import ProCard from '@ant-design/pro-card'
-import { setMonitorId } from '../../../stores/app.store'
-import { ProjectStatusModel } from '../../../domain/project/model/project.model'
-import { useHookTools } from '../../../utils/toolhook'
+import { useHookTools } from '@/utils/toolhook'
+import { ProjectStatusModel } from '@/domain/project/model/project.model'
+import { setMonitorId } from '@/stores/app.store'
 
 interface HealthStatusItemProps {
   detail: ProjectStatusModel

@@ -1,5 +1,5 @@
-import { IMessage } from '../../../code/base/message'
-import { useWebMessageServicec } from '../../../code/service/web-message-service'
+import { IMessage } from '@/code/base/message'
+import { useWebMessageServicec } from '@/code/service/web-message-service'
 import { teamWebRepository } from '../repositories/team-web-repository'
 
 export const getTeamListUseCase = async () => {

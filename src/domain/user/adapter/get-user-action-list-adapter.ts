@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useUserContext } from '../../../presentation/user/provider/userProvider'
+import { useUserContext } from '@/presentation/user/provider/userProvider'
 import { UserActionListModel, UserActionModel } from '../model/user.model'
 import { getUserActionListUseCase } from '../usecase/get-user-action-list'
 

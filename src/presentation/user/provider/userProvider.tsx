@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useMemo, useState } from 'react'
 import {
   UserActionDetail,
   UserActionListModel,
   UserActionModel,
   UserActionStatisticListModel,
   UserModel
-} from '../../../domain/user/model/user.model'
+} from '@/domain/user/model/user.model'
+import React, { createContext, useContext, useMemo, useState } from 'react'
 
 const defaultUserData = {
   user: null,

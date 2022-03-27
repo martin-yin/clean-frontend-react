@@ -1,6 +1,5 @@
 import { Input, Select } from 'antd'
 import React, { FC } from 'react'
-const { Option } = Select
 
 const FilterHeaderItem: FC<any> = (props: { title: string }) => {
   return (

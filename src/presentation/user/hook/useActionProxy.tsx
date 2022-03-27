@@ -1,14 +1,14 @@
-import React from 'react'
 import { Tag } from 'antd'
-import { ListLableItem } from '../../../features/listLable/listLable'
-import { UserActionType } from '../interface'
+import React from 'react'
 import {
   UserActionHtppLog,
   UserActionJsError,
   UserActionOperAtion,
   UserActionPageLoad,
   UserActionResourceError
-} from '../../../domain/user/model/user.model'
+} from '@/domain/user/model/user.model'
+import { ListLableItem } from '@/features/listLable/listLable'
+import { UserActionType } from '../interface'
 
 const PERFORMANCE = (detail: any): JSX.Element => <ListLableItem label="加载方式">{detail.loadType}</ListLableItem>
 

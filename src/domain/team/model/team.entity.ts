@@ -1,4 +1,4 @@
-import { IResponse } from '../../../utils/request'
+import { IResponse } from '@/utils/request'
 import { CreateTeamParams, TeamModel } from './team.model'
 
 export abstract class TeamRepository {

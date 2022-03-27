@@ -1,5 +1,5 @@
-import { IMessage } from '../../../code/base/message'
-import { useWebMessageServicec } from '../../../code/service/web-message-service'
+import { IMessage } from '@/code/base/message'
+import { useWebMessageServicec } from '@/code/service/web-message-service'
 import { ProjectWebRepositoryMapper } from '../repositories/mapper/project-web-repository.mapper'
 import { ProjectWebRepository } from '../repositories/project-web-repository'
 

@@ -1,4 +1,4 @@
-import { CasedProperties } from '../../../code/interface'
+import { CasedProperties } from '@/code/interface'
 import { UserActionDetailBase, UserActionEntity, UserActionStatisticListEntity, UserEntity } from './user.entity'
 
 export type UserActionModel = CasedProperties<

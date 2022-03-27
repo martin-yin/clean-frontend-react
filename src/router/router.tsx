@@ -1,4 +1,4 @@
-import React, { FC, lazy, ComponentType } from 'react'
+import React, { ComponentType, FC, lazy } from 'react'
 import { RouteObject, useRoutes } from 'react-router-dom'
 import LayoutPage, { OutletLayout } from '../pages/layout/layoutPage'
 import LoginPage from '../presentation/login/loginPage'

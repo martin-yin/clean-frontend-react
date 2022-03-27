@@ -1,4 +1,4 @@
-import { IResponse } from '../../../utils/request'
+import { IResponse } from '@/utils/request'
 import { AdminModel, LoginParam, RegisterParam } from './admin.model'
 
 export interface AdminRepository {

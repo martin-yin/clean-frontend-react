@@ -23,6 +23,10 @@ export default defineConfig({
       {
         find: /~antd/,
         replacement: pathResolve('node_modules') + '/antd'
+      },
+      {
+        find: /@\//,
+        replacement: pathResolve('src') + '/'
       }
     ]
   },

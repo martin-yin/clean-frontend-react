@@ -1,11 +1,11 @@
 import { Layout } from 'antd'
 import React, { FC, Suspense, useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import logo from '../../assets/logo.png'
+import logo from '@/assets/logo.png'
 import NavMenu from './components/components/navMenu'
 import SiderMenu from './components/components/siderMenu'
-const { Sider, Content } = Layout
 import './index.less'
+const { Sider, Content } = Layout
 
 export const OutletLayout: FC = () => {
   return <Outlet />

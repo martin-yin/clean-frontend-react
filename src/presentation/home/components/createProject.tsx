@@ -1,11 +1,9 @@
+import { useGetTeamListAdapter } from '@/domain/team/adapter/get-team-adapter'
+import { ModalFrom } from '@/features/modalForm/modalForm'
 import { PlusOutlined } from '@ant-design/icons'
-import { Button, Col, Form, Input, Row, Select, FormInstance } from 'antd'
-import React, { FC, useEffect, useState } from 'react'
+import { Button, Col, Form, FormInstance, Input, Row, Select } from 'antd'
+import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { InjectFactoryGet } from '../../../code/decorator'
-import { useGetTeamListAdapter } from '../../../domain/team/adapter/get-team-adapter'
-import { TeamModel } from '../../../domain/team/model/team.model'
-import { ModalFrom } from '../../../features/modalForm/modalForm'
 
 const { Option } = Select
 

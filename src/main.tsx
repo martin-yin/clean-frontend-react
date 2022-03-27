@@ -1,10 +1,10 @@
+import 'antd/dist/antd.less'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import 'antd/dist/antd.less'
-import 'virtual:windi.css'
-import './index.css'
 import { Provider } from 'react-redux'
+import 'virtual:windi.css'
+import App from './App'
+import './index.css'
 import store from './stores'
 
 ReactDOM.render(

@@ -1,5 +1,5 @@
-import { IMessage } from '../../../code/base/message'
-import { useWebMessageServicec } from '../../../code/service/web-message-service'
+import { IMessage } from '@/code/base/message'
+import { useWebMessageServicec } from '@/code/service/web-message-service'
 import { GetUserListParams, UserListModel } from '../model/user.model'
 import { userWebRepositoryMapper } from '../repositories/mapper/user-web-repository.mapper'
 import { useWebRepository } from '../repositories/user-web-repository'

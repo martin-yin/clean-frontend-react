@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../../stores'
-import { setUserInfo } from '../../../stores/app.store'
+import { useAppDispatch } from '@/stores'
+import { setUserInfo } from '@/stores/app.store'
 import { RegisterParam } from '../model/admin.model'
 import { adminRegisterUseCase } from '../usecase/admin-register-usecase'
 

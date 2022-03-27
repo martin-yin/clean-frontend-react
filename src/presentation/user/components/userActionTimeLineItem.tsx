@@ -1,9 +1,8 @@
 import { Timeline } from 'antd'
-import React, { FC, useEffect, useState } from 'react'
-import { useGetUserActionListAdapter } from '../../../domain/user/adapter/get-user-action-list-adapter'
-import { UserActionModel } from '../../../domain/user/model/user.model'
-import { getTimeHHMM } from '../../../utils'
-import { UseActionQuotaListProxy } from '../hook/useActionQuotaProxy'
+import React, { FC } from 'react'
+import { useGetUserActionListAdapter } from '@/domain/user/adapter/get-user-action-list-adapter'
+import { UserActionModel } from '@/domain/user/model/user.model'
+import { getTimeHHMM } from '@/utils'
 import { useActionTimeLineItem } from '../hook/useActionTimeLineItem'
 
 interface UserActionTimeLineItemItemProps {

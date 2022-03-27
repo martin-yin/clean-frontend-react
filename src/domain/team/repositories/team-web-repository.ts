@@ -1,4 +1,4 @@
-import { IResponse, request } from '../../../utils/request'
+import { IResponse, request } from '@/utils/request'
 import { TeamRepository } from '../model/team.entity'
 import { CreateTeamParams, TeamModel } from '../model/team.model'
 

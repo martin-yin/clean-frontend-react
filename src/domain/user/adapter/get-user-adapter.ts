@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useUserContext } from '../../../presentation/user/provider/userProvider'
+import { useUserContext } from '@/presentation/user/provider/userProvider'
 import { getUserActionStatisticsUseCase } from '../usecase/get-user-action-statistics'
 import { getUserUseCase } from '../usecase/get-user-usecase'
 

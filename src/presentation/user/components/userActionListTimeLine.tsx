@@ -1,7 +1,7 @@
 import { Timeline } from 'antd'
 import React from 'react'
-import { useGetUserActionListAdapter } from '../../../domain/user/adapter/get-user-action-list-adapter'
-import { UserActionModel } from '../../../domain/user/model/user.model'
+import { useGetUserActionListAdapter } from '@/domain/user/adapter/get-user-action-list-adapter'
+import { UserActionModel } from '@/domain/user/model/user.model'
 import BehaviorTimeLineItem from './userActionTimeLineItem'
 interface BehaviorTimeLineProps {
   activeId: string

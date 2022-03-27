@@ -1,8 +1,7 @@
-import { Empty } from 'antd'
 import React, { useCallback } from 'react'
-import { UserActionDetail as UserActionDetailIF } from '../../../domain/user/model/user.model'
-import { ListLable, ListLableItem } from '../../../features/listLable/listLable'
-import { getTimeHHMM } from '../../../utils'
+import { UserActionDetail as UserActionDetailIF } from '@/domain/user/model/user.model'
+import { ListLable, ListLableItem } from '@/features/listLable/listLable'
+import { getTimeHHMM } from '@/utils'
 import { useActionDetailListProxy } from '../hook/useActionProxy'
 import { useUserContext } from '../provider/userProvider'
 

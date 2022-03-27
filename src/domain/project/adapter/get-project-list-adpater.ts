@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import { useWebStorage } from '../../../code/service/web-storage-service'
-import { useAppState } from '../../../stores'
-import { setMonitorId, setMonitorIdAndProject } from '../../../stores/app.store'
-import { useHookTools } from '../../../utils/toolhook'
+import { useWebStorage } from '@/code/service/web-storage-service'
+import { useAppState } from '@/stores'
+import { setMonitorId, setMonitorIdAndProject } from '@/stores/app.store'
+import { useHookTools } from '@/utils/toolhook'
+import { useEffect } from 'react'
 import { getProjectListUseCase } from '../usecase/get-project-list-usercase'
 
 export const useGetProjectListAdapter = () => {

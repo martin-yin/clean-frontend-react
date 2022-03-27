@@ -1,4 +1,4 @@
-import { UserActionDetail } from '../../../domain/user/model/user.model'
+import { UserActionDetail } from '@/domain/user/model/user.model'
 
 const userActionKey = [
   'PERFORMANCE',

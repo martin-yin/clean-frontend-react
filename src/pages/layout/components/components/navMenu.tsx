@@ -1,13 +1,11 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { Avatar, Dropdown, Menu, Select } from 'antd'
 import { Header } from 'antd/lib/layout/layout'
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { useGetProjectListAdapter } from '../../../../domain/project/adapter/get-project-list-adpater'
-import { ProjectModel } from '../../../../domain/project/model/project.model'
-import { useAppState } from '../../../../stores'
-import { setMonitorId, setMonitorIdAndProject } from '../../../../stores/app.store'
-import { useHookTools } from '../../../../utils/toolhook'
+import { useGetProjectListAdapter } from '@/domain/project/adapter/get-project-list-adpater'
+import { ProjectModel } from '@/domain/project/model/project.model'
+import { useAppState } from '@/stores'
 
 const { Option } = Select
 

@@ -1,15 +1,15 @@
 import { Card, Divider, Space } from 'antd'
 import React, { useCallback } from 'react'
 import {
-  PageOperationIcon,
   PageJsErrorIcon,
   PageLoadIcon,
   PageNetworkIcon,
-  PageViewIcon,
-  PageResourceIcon
-} from '../../../assets'
-import { getUserAdpter } from '../../../domain/user/adapter/get-user-adapter'
-import { ListLable, ListLableItem } from '../../../features/listLable/listLable'
+  PageOperationIcon,
+  PageResourceIcon,
+  PageViewIcon
+} from '@/assets'
+import { getUserAdpter } from '@/domain/user/adapter/get-user-adapter'
+import { ListLable, ListLableItem } from '@/features/listLable/listLable'
 
 const USERACTIONICONS: {
   [key: string]: { icon: string; text: string }

@@ -1,7 +1,6 @@
-import { IMessage } from '../../../code/base/message'
-import { useWebMessageServicec } from '../../../code/service/web-message-service'
+import { IMessage } from '@/code/base/message'
+import { useWebMessageServicec } from '@/code/service/web-message-service'
 import { CreateProjectParams } from '../model/project.model'
-import { ProjectWebRepositoryMapper } from '../repositories/mapper/project-web-repository.mapper'
 import { ProjectWebRepository } from '../repositories/project-web-repository'
 
 export const createProjectUseCase = async (param: CreateProjectParams) => {

@@ -1,6 +1,6 @@
 import { Table } from 'antd'
-import React from 'react'
 import { TableProps as AntTableProps } from 'antd/lib/table'
+import React from 'react'
 type TableDataProps<T = any> = Required<Pick<AntTableProps<T>, 'dataSource' | 'columns'>>
 
 // eslint-disable-next-line @typescript-eslint/ban-types

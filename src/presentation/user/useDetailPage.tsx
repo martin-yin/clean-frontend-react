@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
 import { Card, Pagination } from 'antd'
-import './index.less'
-import UserSessionSurvey from './components/userSessionSurvey'
-import { UserProvider, useUserContext } from './provider/userProvider'
-import UserActionListTimeline from './components/userActionListTimeLine'
+import React, { FC } from 'react'
+import { useGetUserActionListAdapter } from '@/domain/user/adapter/get-user-action-list-adapter'
 import UserActionDetail from './components/userActionDetail'
-import { useGetUserActionListAdapter } from '../../domain/user/adapter/get-user-action-list-adapter'
+import UserActionListTimeline from './components/userActionListTimeLine'
+import UserSessionSurvey from './components/userSessionSurvey'
+import './index.less'
+import { UserProvider, useUserContext } from './provider/userProvider'
 
 const UserActionPage: FC = () => {
   const UserContextRender = () => {

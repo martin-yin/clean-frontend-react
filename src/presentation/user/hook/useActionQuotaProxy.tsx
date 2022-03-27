@@ -1,19 +1,19 @@
 import React from 'react'
 import {
-  PageOperationIcon,
+  PageJsErrorIcon,
   PageLoadIcon,
   PageNetworkIcon,
-  PageViewIcon,
+  PageOperationIcon,
   PageResourceIcon,
-  PageJsErrorIcon
-} from '../../../assets'
+  PageViewIcon
+} from '@/assets'
 import {
   UserActionHtppLog,
   UserActionJsError,
   UserActionOperAtion,
   UserActionPageLoad,
   UserActionResourceError
-} from '../../../domain/user/model/user.model'
+} from '@/domain/user/model/user.model'
 import { UserActionQuota, UserActionQuotaType } from '../interface'
 
 const EMPTY = (): UserActionQuota => {

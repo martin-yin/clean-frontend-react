@@ -1,7 +1,7 @@
+import { toUpperCaseData } from '@/utils/request'
+import _ from 'lodash'
 import { UserActionListEntity, UserEntity, UserListEntity } from '../../model/user.entity'
 import { UserActionListModel, UserListModel, UserModel } from '../../model/user.model'
-import _ from 'lodash'
-import { toUpperCaseData } from '../../../../utils/request'
 
 export const userWebRepositoryMapper = {
   mapFromUserListModel(param: UserListEntity): UserListModel {

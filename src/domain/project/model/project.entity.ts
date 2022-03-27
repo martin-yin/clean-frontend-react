@@ -1,5 +1,5 @@
 import { IResponse } from '../../../utils/request'
-import { CreateProjectParams, ProjectModel, ProjectStatusModel } from './project.model'
+import { CreateProjectParams, ProjectModel } from './project.model'
 
 export abstract class ProjectRepository {
   abstract getProject(): Promise<IResponse<ProjectModel>>
