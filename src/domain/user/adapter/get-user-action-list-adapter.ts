@@ -1,35 +1,41 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { UserActionListModel } from '../model/user.model'
+import { useUserContext } from '../../../presentation/user/provider/userProvider'
+import { UserActionListModel, UserActionModel, UserModel } from '../model/user.model'
 import { getUserActionListUseCase } from '../usecase/get-user-action-list'
 
 export const useGetUserActionListAdapter = () => {
-  const [userActionList, setUserActionList] = useState<UserActionListModel>()
+  const { userActionList, updateUserActionList, activeId, updateUserAction, updateActiveId } = useUserContext()
   const params = useParams<'user_id' | 'session_id'>()
 
-  const initSessionBehaviorTrace = useCallback(async page => {
+  const initUserActionList = useCallback(async page => {
     const { total, actionList } = await getUserActionListUseCase({
       session_id: params.session_id as string,
       page: page,
       limit: 3
     })
 
-    setUserActionList({
+    updateUserActionList({
       total,
       actionList
     })
   }, [])
 
   useEffect(() => {
-    initSessionBehaviorTrace(1)
+    initUserActionList(1)
   }, [params])
 
-  const onPageChange = useCallback(async (page: number) => {
-    setUserActionList({
+  const handlePageChange = useCallback(async (page: number) => {
+    updateUserActionList({
       ...(userActionList as UserActionListModel)
     })
-    initSessionBehaviorTrace(page)
+    initUserActionList(page)
   }, [])
 
-  return { userActionList, onPageChange }
+  const handleActiveAction = useCallback((item: UserActionModel) => {
+    updateActiveId(`${item.happenTime}${item.actionType}`)
+    updateUserAction(item.actionDetail as any)
+  }, [])
+
+  return { userActionList, activeId, handlePageChange, handleActiveAction }
 }

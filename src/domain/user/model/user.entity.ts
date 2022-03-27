@@ -22,6 +22,13 @@ export interface UserActionDetailBase {
   browser_version: string
   happen_time: string
   ua: string
+
+  language: string
+  sdk_version: string
+  vp: string
+  screen: string
+  connection_type: string
+  environment: string
 }
 
 export interface UserEntity extends UserActionDetailBase {
@@ -61,8 +68,3 @@ export interface UserActionStatisticEntity {
 export type UserActionStatisticModel = UserActionStatisticEntity
 
 export type UserActionStatisticListEntity = Array<UserActionStatisticModel>
-
-export type PAGE_LOAD = 'load_type'
-export type HTTP_LOG = 'http_url' | 'request_text' | 'response_text'
-export type RESOURCE = 'element_type' | 'source_url'
-export type OPERATION = 'tag_name' | 'inner_text' | 'class_name'

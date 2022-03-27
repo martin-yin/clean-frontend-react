@@ -22,7 +22,8 @@ const USERACTIONICONS: {
   JS_ERROR: { icon: PageJsErrorIcon, text: '次JS异常' }
 }
 
-const UserSessionSurvey = React.memo(({ user, userActionStatisticList }: any) => {
+const UserSessionSurvey = React.memo(() => {
+  const { user, userActionStatisticList } = getUserAdpter()
   const userStatisticsRender = useCallback((key: number, item: any) => {
     const action = USERACTIONICONS[item.action_type]
     return (

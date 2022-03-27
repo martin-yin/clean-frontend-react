@@ -1,14 +1,14 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { Params, useParams } from 'react-router-dom'
+import React, { createContext, SetStateAction, useContext, useMemo, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { UserEntity } from '../../../domain/user/model/user.entity'
 import {
+  CasedProperties,
+  UserActionDetail,
   UserActionListModel,
   UserActionModel,
   UserActionStatisticListModel,
   UserModel
 } from '../../../domain/user/model/user.model'
-import { getUserActionListUseCase } from '../../../domain/user/usecase/get-user-action-list'
-import { getUserActionStatisticsUseCase } from '../../../domain/user/usecase/get-user-action-statistics'
-import { getUserUseCase } from '../../../domain/user/usecase/get-user-usecase'
 
 const defaultUserData = {
   user: null,
@@ -25,9 +25,12 @@ export interface UserProviderState {
   userActionList: UserActionListModel
   activeId: string
   userActionStatisticList: UserActionStatisticListModel
-  userAction: UserModel
-  handlePageChange: (page: number) => void
-  handleActiveAction: (item: UserModel) => void
+  userAction: UserActionModel['actionDetail']
+  updateUser: (value: UserModel) => void
+  updateActiveId: (value: string) => void
+  updateUserActionStatisticList: (value: UserActionStatisticListModel) => void
+  updateUserAction: (value: UserActionDetail) => void
+  updateUserActionList: (value: UserActionListModel) => void
 }
 
 export const UserContext = createContext<UserProviderState>({
@@ -36,10 +39,19 @@ export const UserContext = createContext<UserProviderState>({
   activeId: defaultUserData.activeId,
   userActionStatisticList: defaultUserData.userActionStatisticList,
   userAction: null,
-  handlePageChange(page: number) {
+  updateUser(value: UserModel): void {
     throw new Error('UserContext not yet initialized.')
   },
-  handleActiveAction(item: UserModel) {
+  updateActiveId(value: string): void {
+    throw new Error('UserContext not yet initialized.')
+  },
+  updateUserActionStatisticList(value: UserActionStatisticListModel) {
+    throw new Error('UserContext not yet initialized.')
+  },
+  updateUserAction(value: UserActionDetail) {
+    throw new Error('UserContext not yet initialized.')
+  },
+  updateUserActionList(value: UserActionListModel) {
     throw new Error('UserContext not yet initialized.')
   }
 })
@@ -50,48 +62,12 @@ export const useUserContext = () => {
 }
 
 export const UserProvider = ({ children }) => {
-  const params = useParams<'user_id' | 'session_id'>()
   const [user, setUser] = useState<UserModel>()
   const [activeId, setActiveId] = useState<string>()
-  const [userAction, setUserAction] = useState<UserModel>({} as UserModel)
-
+  const [userAction, setUserAction] = useState<UserActionDetail>({} as UserActionDetail)
   const [userActionStatisticList, setUserActionStatisticList] = useState<UserActionStatisticListModel>()
   const [userActionList, setUserActionList] = useState<UserActionListModel>()
 
-  useEffect(() => {
-    ;(async () => {
-      const user = await getUserUseCase(params.user_id as string)
-      const userActionStatistics = await getUserActionStatisticsUseCase({ session_id: params.session_id as string })
-      setUserActionStatisticList(userActionStatistics)
-      setUser(user)
-      initUserActionList(1)
-    })()
-  }, [params])
-
-  const initUserActionList = useCallback(async (page: number) => {
-    const { total, actionList } = await getUserActionListUseCase({
-      session_id: params.session_id as string,
-      page: page,
-      limit: 3
-    })
-
-    setUserActionList({
-      total,
-      actionList
-    })
-  }, [])
-
-  const handlePageChange = useCallback(async (page: number) => {
-    setUserActionList({
-      ...(userActionList as UserActionListModel)
-    })
-    initUserActionList(page)
-  }, [])
-
-  const handleActiveAction = useCallback((item: UserModel) => {
-    setActiveId(`${item.happenTime}${item.actionType}`)
-    setUserAction(item.actionDetail as any)
-  }, [])
   const value = useMemo(
     () => ({
       user,
@@ -99,10 +75,13 @@ export const UserProvider = ({ children }) => {
       userActionList,
       activeId,
       userAction,
-      handlePageChange,
-      handleActiveAction
+      updateUser: setUser,
+      updateUserActionStatisticList: setUserActionStatisticList,
+      updateUserAction: setUserAction,
+      updateUserActionList: setUserActionList,
+      updateActiveId: setActiveId
     }),
-    [user, userActionStatisticList, userAction, activeId, userActionList, handlePageChange, handleActiveAction]
+    [user, userActionStatisticList, userAction, activeId, userActionList]
   )
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>

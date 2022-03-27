@@ -1,6 +1,7 @@
 .ant-layout-content {
   overflow-y: scroll;
   padding: 24px;
+  height: calc(100vh - 100px);
 }
 
 p {
