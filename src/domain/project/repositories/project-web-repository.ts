@@ -1,6 +1,6 @@
 import { IResponse, request } from '@/utils/request'
 import { ProjectEntity, ProjectRepository, ProjectStatusEntity } from '../model/project.entity'
-import { CreateProjectParams, ProjectModel } from '../model/project.model'
+import { CreateProjectParams } from '../model/project.model'
 
 export const ProjectWebRepository: ProjectRepository = {
   async getProject(): Promise<IResponse<ProjectEntity>> {

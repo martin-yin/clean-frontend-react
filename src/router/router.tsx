@@ -45,7 +45,7 @@ export const RenderRouter: FC = () => {
               element: <RouteWrapper element={lazy(() => import('@/presentation/user/useDetailPage'))} />
             }
           ]
-        }
+        },
         // {
         //   path: '/jsErr',
         //   element: <OutletLayout />,
@@ -60,21 +60,21 @@ export const RenderRouter: FC = () => {
         //     }
         //   ]
         // },
-        // {
-        //   path: '/performance',
-        //   element: <RouteWrapper element={lazy(() => import('../view/performance/performancePage'))} />
-        // },
-        // {
-        //   path: '/http',
-        //   element: <RouteWrapper element={lazy(() => import('../view/http/httpPage'))} />
-        // },
-        // {
-        //   path: '/httpErr',
-        //   element: <RouteWrapper element={lazy(() => import('../view/httpErr/httpErrPage'))} />
-        // },
+        {
+          path: '/performance',
+          element: <RouteWrapper element={lazy(() => import('@/presentation/performance/performancePage'))} />
+        },
+        {
+          path: '/http',
+          element: <RouteWrapper element={lazy(() => import('@/presentation/http/httpPage'))} />
+        },
+        {
+          path: '/httpErr',
+          element: <RouteWrapper element={lazy(() => import('@/presentation/httpErr/httpErrPage'))} />
+        }
         // {
         //   path: '/staticErr',
-        //   element: <RouteWrapper element={lazy(() => import('../view/staticErr/staticErrPage'))} />
+        //   element: <RouteWrapper element={lazy(() => import('@/presentation/staticErr/staticErrPage'))} />
         // }
       ]
     },

@@ -1,3 +1,4 @@
+import { CasedProperties } from '@/code/interface'
 import { message } from 'antd'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import _ from 'lodash'
@@ -110,7 +111,7 @@ export const toLineData = (data: any) => {
   return lineData
 }
 
-export const toUpperCaseData = (data: any) => {
+export const toUpperCaseData = <T>(data: T): CasedProperties<T> => {
   const lineData: any = {}
   for (const k of Object.keys(data)) {
     const lineK = _.camelCase(k)
