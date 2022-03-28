@@ -5,12 +5,11 @@ import UserActionDetail from './components/userActionDetail'
 import UserActionListTimeline from './components/userActionListTimeLine'
 import UserSessionSurvey from './components/userSessionSurvey'
 import './index.less'
-import { UserProvider, useUserContext } from './provider/userProvider'
+import { UserProvider } from './provider/userProvider'
 
 const UserActionPage: FC = () => {
   const UserContextRender = () => {
-    const { userActionList } = useUserContext()
-    const { handlePageChange } = useGetUserActionListAdapter()
+    const { handlePageChange, userActionList, handleActiveAction } = useGetUserActionListAdapter()
     return (
       <>
         {userActionList && (
@@ -19,7 +18,7 @@ const UserActionPage: FC = () => {
             <Card title="行为追踪">
               <div className="flex">
                 <div className="flex-1 time_lines_warp">
-                  <UserActionListTimeline />
+                  <UserActionListTimeline handleActiveAction={handleActiveAction} />
                 </div>
                 <div className="flex-1 time_line_detail_warp">
                   <UserActionDetail />

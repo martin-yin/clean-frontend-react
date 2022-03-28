@@ -40,8 +40,9 @@ const UserActionQuotaList: UserActionQuotaType = {
   PERFORMANCE: (item: UserActionPageLoad) =>
     UserActionQuotaRender(PageLoadIcon, '页面浏览', `页面URL: ${item.pageUrl}`),
   HTTP_LOG: (item: UserActionHtppLog) => UserActionQuotaRender(PageNetworkIcon, 'HTTP请求', `请求URL: ${item.httpUrl}`),
-  JS_ERROR: (item: UserActionJsError) =>
-    UserActionQuotaRender(PageJsErrorIcon, `异常信息 ${item.messsage}`, `页面URL:${item.pageUrl}`),
+  JS_ERROR: (item: UserActionJsError) => {
+    return UserActionQuotaRender(PageJsErrorIcon, `${item.message}`, `页面URL:${item.pageUrl}`)
+  },
   RESOURCE_ERROR: (item: UserActionResourceError) =>
     UserActionQuotaRender(PageResourceIcon, `资源加载异常: ${item.elementType}`, `资源URL: ${item.sourceUrl}`),
   OPERATION: (item: UserActionOperAtion) =>

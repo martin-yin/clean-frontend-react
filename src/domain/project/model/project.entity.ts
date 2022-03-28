@@ -2,11 +2,11 @@ import { IResponse } from '../../../utils/request'
 import { CreateProjectParams, ProjectModel } from './project.model'
 
 export abstract class ProjectRepository {
-  abstract getProject(): Promise<IResponse<ProjectModel>>
+  abstract getProject(): Promise<IResponse<ProjectEntity>>
   abstract getProjects(): Promise<IResponse<Array<ProjectEntity>>>
   abstract createProject(param: CreateProjectParams): Promise<IResponse<ProjectEntity>>
   abstract getProjectStatusList(): Promise<IResponse<Array<ProjectStatusEntity>>>
-  abstract delProject(id: number): Promise<IResponse<string>>
+  abstract deleteProject(id: number): Promise<IResponse<string>>
 }
 
 export interface ProjectEntity {

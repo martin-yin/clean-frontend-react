@@ -36,7 +36,7 @@ export type PAGE_LOAD = 'load_type' | 'page_url'
 export type HTTP_LOG = 'http_url' | 'request_text' | 'response_text' | 'page_url'
 export type RESOURCEERROR = 'element_type' | 'source_url' | 'page_url'
 export type OPERATION = 'tag_name' | 'inner_text' | 'class_name' | 'page_url'
-export type JS_ERROR = 'messsage' | 'page_url'
+export type JS_ERROR = 'message' | 'page_url'
 
 // 页面加载
 export type UserActionPageLoad = CasedProperties<Record<PAGE_LOAD, string> & UserActionDetailBase>

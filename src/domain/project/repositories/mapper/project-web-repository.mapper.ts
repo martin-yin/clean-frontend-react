@@ -1,43 +1,40 @@
-import { Mapper } from '@/code/base/mapper'
 import { ProjectEntity, ProjectStatusEntity } from '../../model/project.entity'
 import { ProjectModel, ProjectStatusModel } from '../../model/project.model'
 
-export class ProjectWebRepositoryMapper extends Mapper<ProjectEntity, ProjectModel> {
-  mapFrom(param: ProjectEntity): ProjectModel {
-    return {
-      id: param.id,
-      adminId: param.admin_id,
-      logo: param.logo,
-      monitorId: param.monitor_id,
-      projectName: param.project_name,
-      projectType: param.project_type,
-      teamId: param.team_id
-    }
-  }
-  mapTo(param: ProjectModel): ProjectEntity {
-    throw new Error('Method not implemented.')
-  }
-
-  mapFromProjectHealthyModel(param: ProjectStatusEntity): ProjectStatusModel {
-    return {
-      id: param.id,
-      adminId: param.admin_id,
-      logo: param.logo,
-      projectType: param.project_type,
-      teamId: param.team_id,
-      httpError: param.http_error,
-      jsError: param.js_error,
-      pv: param.pv,
-      resourcesError: param.resources_error,
-      uv: param.uv,
-      projectName: param.project_name,
-      monitorId: param.monitor_id,
-      rate: getHealthyRate(param)
+export const ProjectWebRepositoryMapper = () => {
+  return {
+    mapFromProjectModel(param: ProjectEntity): ProjectModel {
+      return {
+        id: param.id,
+        adminId: param.admin_id,
+        logo: param.logo,
+        monitorId: param.monitor_id,
+        projectName: param.project_name,
+        projectType: param.project_type,
+        teamId: param.team_id
+      }
+    },
+    mapFromProjectStatusModel(param: ProjectStatusEntity): ProjectStatusModel {
+      return {
+        id: param.id,
+        adminId: param.admin_id,
+        logo: param.logo,
+        projectType: param.project_type,
+        teamId: param.team_id,
+        httpError: param.http_error,
+        jsError: param.js_error,
+        pv: param.pv,
+        resourcesError: param.resources_error,
+        uv: param.uv,
+        projectName: param.project_name,
+        monitorId: param.monitor_id,
+        rate: setRate(param)
+      }
     }
   }
 }
 
-const getHealthyRate = (detail: ProjectStatusEntity) => {
+const setRate = (detail: ProjectStatusEntity) => {
   if (detail) {
     if (detail.pv == 0) {
       return 0

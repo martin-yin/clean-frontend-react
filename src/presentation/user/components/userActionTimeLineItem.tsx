@@ -1,19 +1,19 @@
 import { Timeline } from 'antd'
 import React, { FC } from 'react'
-import { useGetUserActionListAdapter } from '@/domain/user/adapter/get-user-action-list-adapter'
 import { UserActionModel } from '@/domain/user/model/user.model'
 import { getTimeHHMM } from '@/utils'
 import { useActionTimeLineItem } from '../hook/useActionTimeLineItem'
+import { useUserContext } from '../provider/userProvider'
 
 interface UserActionTimeLineItemItemProps {
   key: number
   item: UserActionModel
+  handleActiveAction: (value: UserActionModel) => void
 }
 
-const userActionTimeLineItem: FC<UserActionTimeLineItemItemProps> = ({ key, item }) => {
-  const { activeId, handleActiveAction } = useGetUserActionListAdapter()
+const UserActionTimeLineItem: FC<UserActionTimeLineItemItemProps> = ({ key, item, handleActiveAction }) => {
   const timeLine = useActionTimeLineItem(item)
-
+  const { activeId } = useUserContext()
   return (
     <>
       <Timeline.Item key={key} dot={timeLine.itemIcon()}>
@@ -34,4 +34,4 @@ const userActionTimeLineItem: FC<UserActionTimeLineItemItemProps> = ({ key, item
   )
 }
 
-export default userActionTimeLineItem
+export default UserActionTimeLineItem

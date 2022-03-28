@@ -14,7 +14,6 @@ export const useGetUserActionListAdapter = () => {
       page: page,
       limit: 3
     })
-
     updateUserActionList({
       total,
       actionList

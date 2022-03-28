@@ -6,5 +6,5 @@ export type CasedProperties<T> = {
 // export type CasedPropertiesArray<T extends any[]> = T extends [] ? CasedPropertiesArray<T[number]> : CasedProperties<T>
 
 type UnderScoreCaseToCamelCase<S> = S extends `${infer StartChar}_${infer EndChar}`
-  ? `${StartChar}${Capitalize<EndChar>}`
+  ? `${StartChar}${Capitalize<UnderScoreCaseToCamelCase<EndChar>>}`
   : S

@@ -21,25 +21,28 @@ export const RenderRouter: FC = () => {
           path: '',
           element: <OutletLayout />,
           children: [
-            { path: '', element: <RouteWrapper element={lazy(() => import('../presentation/home/homePage'))} /> }
+            { path: '', element: <RouteWrapper element={lazy(() => import('@/presentation/home/homePage'))} /> }
           ]
         },
-        // {
-        //   path: 'system',
-        //   element: <OutletLayout />,
-        //   children: [
-        //     { path: 'project', element: <RouteWrapper element={lazy(() => import('../view/project/projectPage'))} /> },
-        //     { path: 'team', element: <RouteWrapper element={lazy(() => import('../view/team/teamPage'))} /> }
-        //   ]
-        // },
+        {
+          path: 'system',
+          element: <OutletLayout />,
+          children: [
+            {
+              path: 'project',
+              element: <RouteWrapper element={lazy(() => import('@/presentation/project/projectPage'))} />
+            },
+            { path: 'team', element: <RouteWrapper element={lazy(() => import('@/presentation/team/teamPage'))} /> }
+          ]
+        },
         {
           path: 'user',
           element: <OutletLayout />,
           children: [
-            { path: '', element: <RouteWrapper element={lazy(() => import('../presentation/user/userPage'))} /> },
+            { path: '', element: <RouteWrapper element={lazy(() => import('@/presentation/user/userPage'))} /> },
             {
               path: 'detail/:session_id/:user_id',
-              element: <RouteWrapper element={lazy(() => import('../presentation/user/useDetailPage'))} />
+              element: <RouteWrapper element={lazy(() => import('@/presentation/user/useDetailPage'))} />
             }
           ]
         }

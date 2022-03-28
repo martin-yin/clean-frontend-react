@@ -14,7 +14,8 @@ const defaultUserData = {
     total: 0,
     actionList: []
   },
-  activeId: ''
+  activeId: '',
+  userAction: {} as UserActionModel['actionDetail']
 }
 
 export interface UserProviderState {
@@ -35,7 +36,7 @@ export const UserContext = createContext<UserProviderState>({
   userActionList: defaultUserData.userActionList,
   activeId: defaultUserData.activeId,
   userActionStatisticList: defaultUserData.userActionStatisticList,
-  userAction: null,
+  userAction: defaultUserData.userAction,
   updateUser(value: UserModel): void {
     throw new Error('UserContext not yet initialized.')
   },
@@ -78,7 +79,18 @@ export const UserProvider = ({ children }) => {
       updateUserActionList: setUserActionList,
       updateActiveId: setActiveId
     }),
-    [user, userActionStatisticList, userAction, activeId, userActionList]
+    [
+      user,
+      userActionStatisticList,
+      userAction,
+      activeId,
+      userActionList,
+      setUser,
+      setUserActionStatisticList,
+      setUserAction,
+      setUserActionList,
+      setActiveId
+    ]
   )
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>

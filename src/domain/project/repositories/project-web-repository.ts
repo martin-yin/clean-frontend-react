@@ -3,8 +3,8 @@ import { ProjectEntity, ProjectRepository, ProjectStatusEntity } from '../model/
 import { CreateProjectParams, ProjectModel } from '../model/project.model'
 
 export const ProjectWebRepository: ProjectRepository = {
-  async getProject(): Promise<IResponse<ProjectModel>> {
-    const data = await request<ProjectModel>('get', '/admin/project')
+  async getProject(): Promise<IResponse<ProjectEntity>> {
+    const data = await request<ProjectEntity>('get', '/admin/project')
     return data
   },
   async getProjects(): Promise<IResponse<ProjectEntity[]>> {
@@ -19,7 +19,7 @@ export const ProjectWebRepository: ProjectRepository = {
     const data = await request<Array<ProjectStatusEntity>>('get', '/communal/getHealthStatus')
     return data
   },
-  delProject: function (id: number): Promise<IResponse<string>> {
-    throw new Error('Function not implemented.')
+  async deleteProject(id: number): Promise<IResponse> {
+    return await request('get', `/admin/delProject?id=${id}`)
   }
 }

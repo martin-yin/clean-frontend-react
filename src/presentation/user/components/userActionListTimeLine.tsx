@@ -1,21 +1,20 @@
+import { UserActionModel } from '@/domain/user/model/user.model'
 import { Timeline } from 'antd'
 import React from 'react'
-import { useGetUserActionListAdapter } from '@/domain/user/adapter/get-user-action-list-adapter'
-import { UserActionModel } from '@/domain/user/model/user.model'
-import BehaviorTimeLineItem from './userActionTimeLineItem'
-interface BehaviorTimeLineProps {
-  activeId: string
-  list: Array<UserActionModel> | undefined
-  activeBehavior: (item: UserActionModel) => void
+import { useUserContext } from '../provider/userProvider'
+import UserActionTimeLineItem from './userActionTimeLineItem'
+interface UserActionListTimelineProps {
+  handleActiveAction: (value: UserActionModel) => void
 }
 
-const UserActionListTimeline = React.memo(() => {
-  const { userActionList } = useGetUserActionListAdapter()
+const UserActionListTimeline = React.memo<UserActionListTimelineProps>(({ handleActiveAction }) => {
+  const { userActionList } = useUserContext()
+
   return (
     <Timeline>
       {userActionList &&
         userActionList.actionList.map((item, key: number) => {
-          return <BehaviorTimeLineItem key={key} item={item} />
+          return <UserActionTimeLineItem handleActiveAction={handleActiveAction} key={key} item={item} />
         })}
     </Timeline>
   )
