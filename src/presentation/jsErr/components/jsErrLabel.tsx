@@ -1,25 +1,26 @@
+import { JsErrorModel } from '@/domain/jserror/model/js-error.model'
 import { ListLable, ListLableItem } from '@/features/listLable/listLable'
 import { Card } from 'antd'
 import React from 'react'
 
-const JsErrLabel = React.memo<{ jsErr: any }>(({ jsErr }) => {
+const JsErrLabel = React.memo<{ jsErr: JsErrorModel }>(({ jsErr }) => {
   return (
     <>
       {jsErr ? (
         <>
           <Card>
             <ListLable title="概要">
-              <ListLableItem label="monitor_id">{jsErr.monitor_id}</ListLableItem>
-              <ListLableItem label="URL">{jsErr.page_url}</ListLableItem>
+              <ListLableItem label="monitor_id">{jsErr.monitorId}</ListLableItem>
+              <ListLableItem label="URL">{jsErr.pageUrl}</ListLableItem>
               <ListLableItem label="browser">
-                {jsErr.browser}: {jsErr.browser_version}
+                {jsErr.browser}: {jsErr.browserVersion}
               </ListLableItem>
               <ListLableItem label="device">{jsErr.device}</ListLableItem>
               <ListLableItem label="os">
-                {jsErr.os}: {jsErr.os_version}
+                {jsErr.os}: {jsErr.osVersion}
               </ListLableItem>
-              <ListLableItem label="sessionId">{jsErr.session_id}</ListLableItem>
-              <ListLableItem label="时间">{jsErr.created_at}</ListLableItem>
+              <ListLableItem label="sessionId">{jsErr.sessionId}</ListLableItem>
+              <ListLableItem label="时间">{jsErr.createdAt}</ListLableItem>
             </ListLable>
             <ListLable title="位置">
               <ListLableItem label="ip">{jsErr.ip}</ListLableItem>

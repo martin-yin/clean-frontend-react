@@ -52,7 +52,7 @@ export type UserActionEntity = Record<
   'action_type' | 'happen_day' | 'happen_time' | 'monitor_id' | 'session_id' | 'user_id',
   string
 > & {
-  action_detail: string
+  action_detail: string | any
 }
 
 export interface UserActionListEntity {

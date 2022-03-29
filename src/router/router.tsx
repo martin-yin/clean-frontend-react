@@ -46,20 +46,20 @@ export const RenderRouter: FC = () => {
             }
           ]
         },
-        // {
-        //   path: '/jsErr',
-        //   element: <OutletLayout />,
-        //   children: [
-        //     {
-        //       path: '',
-        //       element: <RouteWrapper element={lazy(() => import('../view/jsErr/jsErrPage'))} />
-        //     },
-        //     {
-        //       path: 'detail/:error_id',
-        //       element: <RouteWrapper element={lazy(() => import('../view/jsErr/jsErrDetailPage'))} />
-        //     }
-        //   ]
-        // },
+        {
+          path: '/jsErr',
+          element: <OutletLayout />,
+          children: [
+            {
+              path: '',
+              element: <RouteWrapper element={lazy(() => import('@/presentation/jsErr/jsErrPage'))} />
+            },
+            {
+              path: 'detail/:error_id',
+              element: <RouteWrapper element={lazy(() => import('@/presentation/jsErr/jsErrDetailPage'))} />
+            }
+          ]
+        },
         {
           path: '/performance',
           element: <RouteWrapper element={lazy(() => import('@/presentation/performance/performancePage'))} />
@@ -71,11 +71,11 @@ export const RenderRouter: FC = () => {
         {
           path: '/httpErr',
           element: <RouteWrapper element={lazy(() => import('@/presentation/httpErr/httpErrPage'))} />
+        },
+        {
+          path: '/staticErr',
+          element: <RouteWrapper element={lazy(() => import('@/presentation/staticErr/staticErrPage'))} />
         }
-        // {
-        //   path: '/staticErr',
-        //   element: <RouteWrapper element={lazy(() => import('@/presentation/staticErr/staticErrPage'))} />
-        // }
       ]
     },
     {

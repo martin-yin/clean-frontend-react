@@ -1,8 +1,11 @@
+import { useGetResourceErrorListAdapter } from '@/domain/resource/adapter/get-resource-error-list-adapter'
+import FilterHeader from '@/features/filterHeader/filterHeader'
 import HeaderQuota from '@/features/headerQuota/headerQuota'
 import { Card, Table } from 'antd'
 import React, { FC } from 'react'
 
 const StaticErrPage: FC = () => {
+  const { resourceErrorData } = useGetResourceErrorListAdapter()
   const columns = [
     {
       title: '资源地址',
@@ -51,9 +54,10 @@ const StaticErrPage: FC = () => {
 
   return (
     <>
-      <HeaderQuota quotaTitleUnitKeys={quotaTitleUnitKeys} quota={resourcesData.quota} />
+      <FilterHeader />
+      <HeaderQuota quotaTitleUnitKeys={quotaTitleUnitKeys} quota={resourceErrorData.quota} />
       <Card>
-        <Table dataSource={resourcesData.resources_list} columns={columns} rowKey="page_source_url" />
+        <Table dataSource={resourceErrorData.resourceList} columns={columns} rowKey="page_source_url" />
       </Card>
     </>
   )

@@ -111,7 +111,7 @@ export const toLineData = (data: any) => {
   return lineData
 }
 
-export const toUpperCaseData = <T>(data: T): CasedProperties<T> => {
+export const toUpperCaseData = <T>(data: T) => {
   const lineData: any = {}
   for (const k of Object.keys(data)) {
     const lineK = _.camelCase(k)

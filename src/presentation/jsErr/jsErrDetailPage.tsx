@@ -1,3 +1,4 @@
+import { useGetJsErrorAdapter } from '@/domain/jserror/adapter/get-js-error-adapter'
 import { Card, Col, Divider, Row } from 'antd'
 import React, { FC } from 'react'
 import JsErrLabel from './components/jsErrLabel'
@@ -9,21 +10,19 @@ import './index.less'
 
 const JsErrDetailPage: FC = () => {
   const JsErrContextRender = () => {
-    const {
-      jsErrData: { jsErr, visible, stackFrames }
-    } = useJsErrContext()
+    const { jsError, visible } = useJsErrContext()
     return (
       <>
         <Row gutter={20}>
           <Col span={18}>
             <Card>
-              <JsErrSurvey jsErr={jsErr} />
+              <JsErrSurvey />
               <Divider />
-              <StackFramesRender stackFrames={stackFrames} />
+              <StackFramesRender />
             </Card>
           </Col>
           <Col span={6}>
-            <JsErrLabel jsErr={jsErr} />
+            <JsErrLabel jsErr={jsError} />
           </Col>
         </Row>
         <SourceMapLoadModal visible={visible} />

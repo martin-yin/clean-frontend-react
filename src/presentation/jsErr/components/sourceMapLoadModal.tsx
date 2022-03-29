@@ -1,88 +1,17 @@
-import React, { useEffect } from 'react'
-import { Form, Input, message, Tabs, Upload } from 'antd'
+import { useJsErrorAdapter } from '@/domain/jserror/adapter/js-error-adapter'
+import { ModalFrom } from '@/features/modalForm/modalForm'
 import { InboxOutlined } from '@ant-design/icons'
-import { LoadSourceMap } from '../../../request'
-import sourceMap from 'source-map-js'
-import { ModalFrom } from '../../../components/modalForm/modalForm'
-import type { RcFile } from 'antd/lib/upload'
-import { AxiosResponse } from 'axios'
-import { useJsErrContext } from '../hook/useJsErrDetail'
+import { Form, Input, Tabs, Upload } from 'antd'
+import React from 'react'
+
 const { Dragger } = Upload
 const { TabPane } = Tabs
 
 const SourceMapLoadModal = React.memo<{ visible: boolean }>(({ visible = false }) => {
-  const [form] = Form.useForm()
-  const {
-    jsErrData: { stackFrame, stackFrames },
-    handleSetOriginSource,
-    handleCloseModal
-  } = useJsErrContext()
-
-  const props = (function setUploadProps() {
-    return {
-      multiple: false,
-      maxCount: 1,
-      action: '',
-      beforeUpload(file: RcFile) {
-        if (file.name.substring(file.name.lastIndexOf('.') + 1) !== 'map') {
-          message.error(`请上传.js.map 文件！`)
-          return
-        }
-        const reader = new FileReader()
-        reader.readAsText(file, 'UTF-8')
-        reader.onload = event => {
-          handleLookSource(event.target.result, stackFrame.line, stackFrame.column)
-        }
-        return false
-      }
-    }
-  })()
-
-  const handleModelFormCreate = () => {
-    form.validateFields().then(async (value: { url: string }) => {
-      const sourceMapCodeResponse: AxiosResponse<{
-        data: any
-      }> = await LoadSourceMap(value.url)
-      if (sourceMapCodeResponse.status !== 200) {
-        message.error(`无法加载source-map文件！`)
-        return
-      }
-      handleLookSource(sourceMapCodeResponse.data, stackFrame.line, stackFrame.column)
-    })
-  }
-
-  useEffect(() => {
-    form.setFieldsValue({
-      url: stackFrame?.url
-    })
-  }, [stackFrame?.url])
-
-  const handleLookSource = (sourceMapCode, line: number, column: number) => {
-    try {
-      const consumer = new sourceMap.SourceMapConsumer(sourceMapCode)
-      const lookUpRes = consumer.originalPositionFor({
-        line: line,
-        column: column
-      })
-      const source = consumer.sourceContentFor(lookUpRes.source)
-      handleSetOriginSource(
-        {
-          source,
-          column: lookUpRes.column,
-          line: lookUpRes.line
-        },
-        stackFrame.index,
-        stackFrames
-      )
-    } catch (e) {
-      console.log(e, 'sourcemap error')
-      message.error(`未能解析出sourceMap！`)
-      return
-    }
-  }
+  const { props, form, handleCloseModel, handleModelFormCreate } = useJsErrorAdapter()
 
   return (
-    <ModalFrom onClose={handleCloseModal} visible={visible} onCreate={handleModelFormCreate} title="SouceMap映射">
+    <ModalFrom onClose={handleCloseModel} visible={visible} onCreate={handleModelFormCreate} title="SouceMap映射">
       <Tabs>
         <TabPane tab="本地上传" key="1">
           <Dragger {...props}>

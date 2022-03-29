@@ -1,30 +1,23 @@
+import { useGetJsErrorListAdapter } from '@/domain/jserror/adapter/get-js-error-list-adapter'
+import { JsErrorModel } from '@/domain/jserror/model/js-error.model'
+import FilterHeader from '@/features/filterHeader/filterHeader'
+import { useFilterHeaderContext } from '@/features/filterHeader/hook/useFilterHeaderInit'
 import { CloseCircleOutlined, ExclamationCircleOutlined, SyncOutlined } from '@ant-design/icons'
 import { Card, Space, Table, Tag } from 'antd'
 import moment from 'moment'
 import React, { FC, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import FilterHeader from '@/components/filterHeader/filterHeader'
-import { useFilterHeaderContext } from '../../components/filterHeader/hook/useFilterHeaderInit'
 
 const JsErrPage: FC = () => {
-  const [jsErrs, setJsErrs] = useState<JsErrIF.JsErrs>([])
   const navigate = useNavigate()
-  const { filterHeaderParams } = useFilterHeaderContext()
 
-  const initData = useCallback(async () => {
-    const result = await getJsErrors(filterHeaderParams)
-    setJsErrs(result.data)
-  }, [filterHeaderParams])
-
-  useEffect(() => {
-    initData()
-  }, [filterHeaderParams])
+  const { jsErrorList } = useGetJsErrorListAdapter()
 
   const columns = [
     {
       title: '概况',
       key: 'error_name',
-      render: recode => (
+      render: (recode: JsErrorModel) => (
         <div
           style={{ cursor: 'pointer' }}
           onClick={() => {
@@ -34,36 +27,36 @@ const JsErrPage: FC = () => {
           <Space size="middle">
             <h3>
               <Tag icon={<CloseCircleOutlined />} color="error">
-                {recode.error_name}
+                {recode.errorName}
               </Tag>
             </h3>
-            <p>{recode.page_url}</p>
+            <p>{recode.pageUrl}</p>
           </Space>
           <p>{recode.message}</p>
           <Space size="small">
-            <p>{moment(recode?.last_time).fromNow()}</p>
-            <p>{moment(recode?.first_time).fromNow()}</p>
+            <p>{moment(recode?.lastTime).fromNow()}</p>
+            <p>{moment(recode?.firstTime).fromNow()}</p>
           </Space>
         </div>
       )
     },
     {
       title: '最后出现时间',
-      render: (recode: JsErrIF.JsErr) => (
+      render: (recode: JsErrorModel) => (
         <Tag icon={<ExclamationCircleOutlined />} color="warning">
-          {moment(recode?.last_time).fromNow()}
+          {moment(recode?.lastTime).fromNow()}
         </Tag>
       )
     },
     {
       title: '异常次数(总)',
       key: '',
-      render: (recode: JsErrIF.JsErr) => <>{recode.total}</>
+      render: (recode: JsErrorModel) => <>{recode.total}</>
     },
     {
       title: '影响总数用户',
       key: 'error_user',
-      render: (recode: JsErrIF.JsErr) => <>{recode.error_user}</>
+      render: (recode: JsErrorModel) => <>{recode.errorUser}</>
     },
     {
       title: '处理人',
@@ -74,7 +67,7 @@ const JsErrPage: FC = () => {
       title: '状态',
       dataIndex: '',
       key: '',
-      render: (recode: JsErrIF.JsErr) => (
+      render: (recode: JsErrorModel) => (
         <p>
           <Tag icon={<SyncOutlined spin />} color="error">
             等待修复
@@ -88,7 +81,7 @@ const JsErrPage: FC = () => {
     <>
       <FilterHeader />
       <Card>
-        <Table dataSource={jsErrs} columns={columns} rowKey="message" />
+        <Table dataSource={jsErrorList} columns={columns} rowKey="message" />
       </Card>
     </>
   )

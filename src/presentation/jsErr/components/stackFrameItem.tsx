@@ -1,7 +1,7 @@
+import { useJsErrorAdapter } from '@/domain/jserror/adapter/js-error-adapter'
+import { encodeHTML, preLineStartEnd } from '@/utils'
 import { Button, Col, Row } from 'antd'
 import React, { FC } from 'react'
-import { encodeHTML, preLineStartEnd } from '../../../utils'
-import { useJsErrContext } from '../hook/useJsErrDetail'
 
 const SourceMapCode: FC<any> = ({ item }) => {
   const { line, column } = item.originSource
@@ -34,7 +34,7 @@ const SourceMapCode: FC<any> = ({ item }) => {
 }
 
 const StackFrameItem: FC<any> = ({ item, index }) => {
-  const { handleOpenSourceMapModal } = useJsErrContext()
+  const { handleOpenSourceMapModal } = useJsErrorAdapter()
 
   return (
     <Row gutter={[8, 8]}>
