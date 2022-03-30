@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { AdminModel } from '@/domain/admin/model/admin.model'
+import { AdminModel } from '@/domain/admin/model/adminModel'
 
 const initialState = {
   menuKeys: {

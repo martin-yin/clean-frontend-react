@@ -1,5 +1,5 @@
-import { useAdminLoginAdapter } from '@/domain/admin/adapter/admin-login-adapter'
-import { useAdminRegisterAdapter } from '@/domain/admin/adapter/admin-register-adapter'
+import { useAdminLoginAdapter } from '@/domain/admin/adapter/adminLoginAdapter'
+import { useAdminRegisterAdapter } from '@/domain/admin/adapter/admiRegisterAdapter'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Form, Input, Tabs } from 'antd'
 import React, { FC } from 'react'

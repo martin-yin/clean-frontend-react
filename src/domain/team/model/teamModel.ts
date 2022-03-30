@@ -1,9 +1,9 @@
 import { CasedProperties } from '@/code/interface'
-import { AdminModel } from '@/domain/admin/model/admin.model'
+import { AdminModel } from '@/domain/admin/model/adminModel'
 import { ProjectModel } from '@/domain/project/model/project.model'
-import { TeamEntity } from './team.entity'
+import { TeamEntity } from './teamEntity'
 
-export type TeamModel = CasedProperties<Omit<TeamEntity, 'team_admins' | 'team_projects'>> & {
+export type TeamModel = CasedProperties<Omit<TeamEntity, 'team_admin_list' | 'team_project_list'>> & {
   adminList: Array<AdminModel>
   teamProjectList: Array<ProjectModel>
 }

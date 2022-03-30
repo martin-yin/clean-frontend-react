@@ -5,11 +5,11 @@ export interface AdminModel {
   token: string
 }
 
-export interface LoginParam {
+export interface LoginParams {
   userName: string
   password: string
 }
 
-export interface RegisterParam extends LoginParam {
+export interface RegisterParams extends LoginParams {
   nickName: string
 }

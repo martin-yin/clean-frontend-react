@@ -14,10 +14,10 @@ export interface JsErrProviderState {
 }
 
 export const JsErrContext = createContext<JsErrProviderState>({
-  jsError: {} as any,
+  jsError: {} as JsErrorModel,
   visible: false,
   stackFrameList: [],
-  stackFrame: {} as any,
+  stackFrame: {} as StackFrameModel,
   updateJsError(value: JsErrorModel) {
     throw new Error('JsErrContext not yet initialized.')
   },

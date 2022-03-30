@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { TeamModel } from '../model/team.model'
-import { getTeamListUseCase } from '../usecase/get-team-list-usecase'
+import { TeamModel } from '../model/teamModel'
+import { getTeamListUseCase } from '../usecase/getTeamListUsecase'
 
 export const useGetTeamListAdapter = () => {
   const [teamList, setTeamList] = useState<Array<TeamModel>>([])

@@ -1,11 +1,10 @@
 import { useGetJsErrorListAdapter } from '@/domain/jserror/adapter/get-js-error-list-adapter'
 import { JsErrorModel } from '@/domain/jserror/model/js-error.model'
 import FilterHeader from '@/features/filterHeader/filterHeader'
-import { useFilterHeaderContext } from '@/features/filterHeader/hook/useFilterHeaderInit'
 import { CloseCircleOutlined, ExclamationCircleOutlined, SyncOutlined } from '@ant-design/icons'
 import { Card, Space, Table, Tag } from 'antd'
 import moment from 'moment'
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const JsErrPage: FC = () => {

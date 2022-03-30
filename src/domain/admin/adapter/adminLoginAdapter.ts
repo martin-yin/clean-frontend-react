@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@/stores'
 import { setUserInfo } from '@/stores/app.store'
-import { LoginParam } from '../model/admin.model'
-import { adminLoginUseCase } from '../usecase/admin-login-usecase'
+import { LoginParams } from '../model/adminModel'
+import { adminLoginUseCase } from '../usecase/adminLoginUsecase'
 
-export const useAdminLoginAdapter = () => {
+export function useAdminLoginAdapter() {
   const storeDispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const adminLogin = async (params: LoginParam) => {
+  const adminLogin = async (params: LoginParams) => {
     const data = await adminLoginUseCase(params)
     if (data) {
       storeDispatch(setUserInfo(data))

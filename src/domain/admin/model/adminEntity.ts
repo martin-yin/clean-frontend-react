@@ -1,9 +1,9 @@
 import { IResponse } from '@/utils/request'
-import { AdminModel, LoginParam, RegisterParam } from './admin.model'
+import { AdminModel, LoginParams, RegisterParams } from './adminModel'
 
 export interface AdminRepository {
-  login(param: LoginParam): Promise<IResponse<AdminModel>>
-  register(param: RegisterParam): Promise<IResponse<AdminModel>>
+  login(param: LoginParams): Promise<IResponse<AdminModel>>
+  register(param: RegisterParams): Promise<IResponse<AdminModel>>
 }
 
 export interface AdminEntity {

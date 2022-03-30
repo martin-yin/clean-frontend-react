@@ -1,4 +1,4 @@
-import { useGetTeamListAdapter } from '@/domain/team/adapter/get-team-adapter'
+import { useGetTeamListAdapter } from '@/domain/team/adapter/geTeamAdapter'
 import { ModalFrom } from '@/features/modalForm/modalForm'
 import { PlusOutlined } from '@ant-design/icons'
 import { Button, Col, Form, FormInstance, Input, Row, Select } from 'antd'

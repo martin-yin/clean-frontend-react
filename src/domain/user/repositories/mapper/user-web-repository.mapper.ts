@@ -11,7 +11,7 @@ export const UserWebRepositoryMapper = () => {
     mapFromUser(param: UserEntity): UserModel {
       return toUpperCaseData(_.omit(param, ['created_at', 'updated_at'])) as unknown as UserModel
     },
-    mapFormUserActionList(param: UserActionListEntity): UserActionListModel {
+    mapFormUserActionListModel(param: UserActionListEntity): UserActionListModel {
       return {
         total: param.total,
         actionList: param.user_actions_list.map(item => {

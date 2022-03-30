@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '@/stores'
 import { setUserInfo } from '@/stores/app.store'
-import { RegisterParam } from '../model/admin.model'
-import { adminRegisterUseCase } from '../usecase/admin-register-usecase'
+import { RegisterParams } from '../model/adminModel'
+import { adminRegisterUseCase } from '../usecase/adminRegisterUsecase'
 
-export const useAdminRegisterAdapter = () => {
+export function useAdminRegisterAdapter() {
   const storeDispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const adminRegister = async (params: RegisterParam) => {
+  const adminRegister = async (params: RegisterParams) => {
     const data = await adminRegisterUseCase(params)
     if (data) {
       storeDispatch(setUserInfo(data))

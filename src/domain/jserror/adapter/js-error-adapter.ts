@@ -37,26 +37,26 @@ export const useJsErrorAdapter = () => {
     }
   })()
 
-  const handleOpenSourceMapModal = useCallback((item: StackFrameModel, index) => {
+  const handleOpenSourceMapModal = (item: StackFrameModel, index) => {
     updateVisible(true)
     updateStackFrame({
       source: item.fileName + '.map',
       index: index,
       ...item
     })
-  }, [])
+  }
 
-  const handleSetOriginSource = useCallback((sourceCode, index) => {
+  const handleSetOriginSource = (sourceCode, index) => {
     stackFrameList[index].originSource = {
       ...sourceCode
     }
     updateStackFrameList(stackFrameList)
     updateVisible(false)
-  }, [])
+  }
 
-  const handleCloseModel = useCallback(() => {
+  const handleCloseModel = () => {
     updateVisible(false)
-  }, [])
+  }
 
   const handleModelFormCreate = () => {
     form.validateFields().then(async (value: { url: string }) => {

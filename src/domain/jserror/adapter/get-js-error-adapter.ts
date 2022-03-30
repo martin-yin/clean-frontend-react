@@ -4,8 +4,7 @@ import { useParams } from 'react-router-dom'
 import { getJsErrorUseCase } from '../usecase/get-js-error-usecase'
 
 export const useGetJsErrorAdapter = () => {
-  const { jsError, updateJsError, updateStackFrameList, updateVisible, updateStackFrame, stackFrameList } =
-    useJsErrContext()
+  const { jsError, updateJsError, updateStackFrameList } = useJsErrContext()
   const params = useParams<'error_id'>()
   useEffect(() => {
     ;(async () => {
@@ -13,7 +12,7 @@ export const useGetJsErrorAdapter = () => {
       updateJsError(data)
       updateStackFrameList(data.stackFrames as any)
     })()
-  }, [])
+  }, [params.error_id])
 
   return { jsError }
 }
