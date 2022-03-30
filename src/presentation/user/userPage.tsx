@@ -2,7 +2,7 @@ import { Card, Space, Tag } from 'antd'
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { useGetUserListAdapter } from '@/domain/user/adapter/getUserListAdapter'
-import { UserModel } from '@/domain/user/model/user.model'
+import { UserModel } from '@/domain/user/model/userModel'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import TableData from '@/features/tableData/tableData'
 

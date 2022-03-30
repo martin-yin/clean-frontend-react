@@ -1,5 +1,5 @@
 import { IResponse } from '@/code/lib/request'
-import { GetUserListParams } from './user.model'
+import { GetUserListParams } from './userModel'
 
 export interface UserRepository {
   getUserList(params: GetUserListParams): Promise<IResponse<UserListEntity>>

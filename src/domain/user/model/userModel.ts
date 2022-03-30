@@ -1,5 +1,5 @@
 import { CasedProperties } from '@/code/interface'
-import { UserActionDetailBase, UserActionEntity, UserActionStatisticListEntity, UserEntity } from './user.entity'
+import { UserActionDetailBase, UserActionEntity, UserActionStatisticListEntity, UserEntity } from './userEntity'
 
 export type UserActionModel = CasedProperties<
   Omit<UserActionEntity, 'action_detail'> & {

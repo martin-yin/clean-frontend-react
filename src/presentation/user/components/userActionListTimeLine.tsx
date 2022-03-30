@@ -1,4 +1,4 @@
-import { UserActionModel } from '@/domain/user/model/user.model'
+import { UserActionModel } from '@/domain/user/model/userModel'
 import { Timeline } from 'antd'
 import React from 'react'
 import { useUserContext } from '../provider/userProvider'

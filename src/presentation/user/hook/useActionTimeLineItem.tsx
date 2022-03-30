@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { UserActionModel } from '@/domain/user/model/user.model'
+import { UserActionModel } from '@/domain/user/model/userModel'
 import { UseActionQuotaListProxy } from './useActionQuotaProxy'
 
 export const useActionTimeLineItem = (item: UserActionModel) => {

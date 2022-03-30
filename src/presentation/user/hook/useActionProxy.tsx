@@ -6,7 +6,7 @@ import {
   UserActionOperAtion,
   UserActionPageLoad,
   UserActionResourceError
-} from '@/domain/user/model/user.model'
+} from '@/domain/user/model/userModel'
 import { ListLableItem } from '@/features/listLable/listLable'
 import { UserActionType } from '../interface'
 
@@ -26,7 +26,7 @@ const HTTP_LOG = (detail: UserActionHtppLog): JSX.Element => (
 )
 
 const JS_ERROR = (detail: UserActionJsError): JSX.Element => (
-  <ListLableItem label="异常信息">{detail.messsage}</ListLableItem>
+  <ListLableItem label="异常信息">{detail.message}</ListLableItem>
 )
 
 const RESOURCE_ERROR = (detail: UserActionResourceError): JSX.Element => (

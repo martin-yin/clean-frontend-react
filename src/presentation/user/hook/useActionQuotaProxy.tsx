@@ -13,7 +13,7 @@ import {
   UserActionOperAtion,
   UserActionPageLoad,
   UserActionResourceError
-} from '@/domain/user/model/user.model'
+} from '@/domain/user/model/userModel'
 import { UserActionQuota, UserActionQuotaType } from '../interface'
 
 const EMPTY = (): UserActionQuota => {
