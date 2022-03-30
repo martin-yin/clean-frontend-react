@@ -1,4 +1,4 @@
-import { useHttpErrAdapter } from '@/domain/http/adapter/http-err-adapter'
+import { useHttpErrAdapter } from '@/domain/http/adapter/htttErrAdapter'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import { Card, Table, Tag } from 'antd'
 import moment from 'moment'

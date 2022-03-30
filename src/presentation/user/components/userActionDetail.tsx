@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { UserActionDetail as UserActionDetailIF } from '@/domain/user/model/user.model'
 import { ListLable, ListLableItem } from '@/features/listLable/listLable'
-import { getTimeHHMM } from '@/utils'
+import { getTimeHHMM } from '@/code'
 import { useActionDetailListProxy } from '../hook/useActionProxy'
 import { useUserContext } from '../provider/userProvider'
 

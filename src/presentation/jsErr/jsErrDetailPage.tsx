@@ -1,4 +1,3 @@
-import { useGetJsErrorAdapter } from '@/domain/jserror/adapter/get-js-error-adapter'
 import { Card, Col, Divider, Row } from 'antd'
 import React, { FC } from 'react'
 import JsErrLabel from './components/jsErrLabel'

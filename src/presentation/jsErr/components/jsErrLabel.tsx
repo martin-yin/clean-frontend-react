@@ -1,4 +1,4 @@
-import { JsErrorModel } from '@/domain/jserror/model/js-error.model'
+import { JsErrorModel } from '@/domain/jserror/model/jsErrorModel'
 import { ListLable, ListLableItem } from '@/features/listLable/listLable'
 import { Card } from 'antd'
 import React from 'react'

@@ -1,6 +1,6 @@
+import { useGetUserActionListAdapter } from '@/domain/user/adapter/getUserActionListAdapter'
 import { Card, Pagination } from 'antd'
 import React, { FC } from 'react'
-import { useGetUserActionListAdapter } from '@/domain/user/adapter/get-user-action-list-adapter'
 import UserActionDetail from './components/userActionDetail'
 import UserActionListTimeline from './components/userActionListTimeLine'
 import UserSessionSurvey from './components/userSessionSurvey'

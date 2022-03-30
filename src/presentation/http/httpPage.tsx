@@ -1,4 +1,4 @@
-import { useHttpAdapter } from '@/domain/http/adapter/http-adapter'
+import { useHttpAdapter } from '@/domain/http/adapter/httpAdapter'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import HeaderQuota from '@/features/headerQuota/headerQuota'
 import { Card, Table } from 'antd'
@@ -38,7 +38,7 @@ const HttpPage: FC = () => {
     },
     {
       title: '用户数',
-      dataIndex: 'user_total',
+      dataIndex: 'userTotal',
       key: 'userTotal'
     }
   ]

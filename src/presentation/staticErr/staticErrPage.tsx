@@ -1,4 +1,4 @@
-import { useGetResourceErrorListAdapter } from '@/domain/resource/adapter/get-resource-error-list-adapter'
+import { useGetResourceErrorListAdapter } from '@/domain/resource/adapter/getResourceErrorListAdapter'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import HeaderQuota from '@/features/headerQuota/headerQuota'
 import { Card, Table } from 'antd'

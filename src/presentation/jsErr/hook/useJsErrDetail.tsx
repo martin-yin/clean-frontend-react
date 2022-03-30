@@ -1,4 +1,4 @@
-import { JsErrorModel, StackFrameListModel, StackFrameModel } from '@/domain/jserror/model/js-error.model'
+import { JsErrorModel, StackFrameListModel, StackFrameModel } from '@/domain/jserror/model/jsErrorModel'
 import React, { useMemo } from 'react'
 import { createContext, useContext, useState } from 'react'
 

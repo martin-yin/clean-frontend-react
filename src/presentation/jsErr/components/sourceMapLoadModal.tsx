@@ -1,4 +1,4 @@
-import { useJsErrorAdapter } from '@/domain/jserror/adapter/js-error-adapter'
+import { useJsErrorAdapter } from '@/domain/jserror/adapter/jsErrorAdapter'
 import { ModalFrom } from '@/features/modalForm/modalForm'
 import { InboxOutlined } from '@ant-design/icons'
 import { Form, Input, Tabs, Upload } from 'antd'

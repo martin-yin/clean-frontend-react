@@ -1,7 +1,7 @@
 import { Card, Space, Tag } from 'antd'
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { useGetUserListAdapter } from '@/domain/user/adapter/get-user-list-adapter'
+import { useGetUserListAdapter } from '@/domain/user/adapter/getUserListAdapter'
 import { UserModel } from '@/domain/user/model/user.model'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import TableData from '@/features/tableData/tableData'
@@ -10,40 +10,36 @@ import './index.less'
 
 const UserPage: FC = () => {
   const { userList } = useGetUserListAdapter()
-
   const columns = [
     {
-      title: 'user_id',
+      title: 'userId',
       dataIndex: 'userId',
       key: 'userId'
     },
     {
       title: '设备',
-      dataIndex: 'device',
-      key: 'device',
+      dataIndex: 'deviceInfo',
+      key: 'deviceInfo',
       render: (text: string, recode: UserModel) => {
         return (
           <Tag color={recode.deviceType === 'Pc' ? '#2db7f5' : recode.device === 'Android' ? '#87d068' : '#f50'}>
-            {recode.device} / {recode.deviceType}
+            {text}
           </Tag>
         )
       }
     },
     {
       title: '操作系统',
-      dataIndex: '操作系统',
-      key: 'system',
+      dataIndex: 'osInfo',
+      key: 'osInfo',
       render: (text: string, recode: UserModel) => {
-        return <Tag color="green">{`${recode.os} ${recode.osVersion}`}</Tag>
+        return <Tag color="green">{text}</Tag>
       }
     },
     {
       title: '浏览器',
-      dataIndex: 'browser',
-      key: 'browser',
-      render: (text: string, recode: UserModel) => {
-        return <>{`${recode.browser} ${recode.browserVersion}`}</>
-      }
+      dataIndex: 'browserInfo',
+      key: 'browserInfo'
     },
     {
       title: 'ip',
@@ -53,18 +49,12 @@ const UserPage: FC = () => {
     {
       title: '位置',
       dataIndex: '位置',
-      key: 'address',
-      render: (text: string, recode: UserModel) => {
-        return <>{`${recode.nation}${recode.province}${recode.city}${recode.district}`}</>
-      }
+      key: 'address'
     },
     {
-      title: '创建时间',
+      title: '发生时间',
       dataIndex: 'happenTime',
-      key: 'happenTime',
-      render: (text: string) => {
-        return text
-      }
+      key: 'happenTime'
     },
     {
       title: '操作',

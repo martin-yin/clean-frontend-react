@@ -1,6 +1,6 @@
+import { IResponse } from '@/code/lib/request'
 import { AdminEntity } from '@/domain/admin/model/adminEntity'
-import { ProjectEntity } from '@/domain/project/model/project.entity'
-import { IResponse } from '@/utils/request'
+import { ProjectEntity } from '@/domain/project/model/projectEntity'
 import { CreateTeamParams, TeamModel } from './teamModel'
 
 export interface TeamRepository {

@@ -1,12 +1,10 @@
-import { usePerformanceAdapter } from '@/domain/performance/adapter/performance-adapter'
+import { usePerformanceAdapter } from '@/domain/performance/adapter/performanceAdapter'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import HeaderQuota from '@/features/headerQuota/headerQuota'
 import { Card, Table, Tag } from 'antd'
 import React, { FC } from 'react'
 import { PerformanceChart } from './components/performanceChart'
 import { StackBarChar } from './components/stackBarChar'
-
-// import './index.less'
 
 const PerformancePage: FC = () => {
   const { quota, stackConsumes, performanceConsumes, performances } = usePerformanceAdapter()

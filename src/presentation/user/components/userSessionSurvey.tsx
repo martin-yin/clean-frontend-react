@@ -8,7 +8,7 @@ import {
   PageResourceIcon,
   PageViewIcon
 } from '@/assets'
-import { getUserAdpter } from '@/domain/user/adapter/get-user-adapter'
+import { getUserAdpter } from '@/domain/user/adapter/getUserAdapter'
 import { ListLable, ListLableItem } from '@/features/listLable/listLable'
 
 const USERACTIONICONS: {

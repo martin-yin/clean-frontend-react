@@ -3,7 +3,7 @@ import React from 'react'
 import { CaretRightOutlined } from '@ant-design/icons'
 import StackFrameItem from './stackFrameItem'
 import { useJsErrContext } from '../hook/useJsErrDetail'
-import { StackFrameModel } from '@/domain/jserror/model/js-error.model'
+import { StackFrameModel } from '@/domain/jserror/model/jsErrorModel'
 const { Panel } = Collapse
 
 const StackFramesRender = React.memo(() => {

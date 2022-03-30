@@ -7,6 +7,11 @@ import App from './App'
 import './index.css'
 import store from './stores'
 
+import 'moment/locale/zh-cn'
+import moment from 'moment'
+// 设置中文
+moment.locale('zh-cn')
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

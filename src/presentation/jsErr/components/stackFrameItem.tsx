@@ -1,5 +1,5 @@
-import { useJsErrorAdapter } from '@/domain/jserror/adapter/js-error-adapter'
-import { encodeHTML, preLineStartEnd } from '@/utils'
+import { useJsErrorAdapter } from '@/domain/jserror/adapter/jsErrorAdapter'
+import { encodeHTML, preLineStartEnd } from '@/code'
 import { Button, Col, Row } from 'antd'
 import React, { FC } from 'react'
 

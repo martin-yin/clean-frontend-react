@@ -1,4 +1,4 @@
-import { IResponse, request } from '@/utils/request'
+import { IResponse, request } from '@/code/lib/request'
 import { AdminRepository } from '../model/adminEntity'
 import { AdminModel, LoginParams, RegisterParams } from '../model/adminModel'
 

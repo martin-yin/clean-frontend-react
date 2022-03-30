@@ -1,9 +1,8 @@
-import { useGetJsErrorListAdapter } from '@/domain/jserror/adapter/get-js-error-list-adapter'
-import { JsErrorModel } from '@/domain/jserror/model/js-error.model'
+import { useGetJsErrorListAdapter } from '@/domain/jserror/adapter/getJsErrorListAdapter'
+import { JsErrorModel } from '@/domain/jserror/model/jsErrorModel'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import { CloseCircleOutlined, ExclamationCircleOutlined, SyncOutlined } from '@ant-design/icons'
 import { Card, Space, Table, Tag } from 'antd'
-import moment from 'moment'
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -33,8 +32,7 @@ const JsErrPage: FC = () => {
           </Space>
           <p>{recode.message}</p>
           <Space size="small">
-            <p>{moment(recode?.lastTime).fromNow()}</p>
-            <p>{moment(recode?.firstTime).fromNow()}</p>
+            <p>最早出现: {recode.lastTime}</p>
           </Space>
         </div>
       )
@@ -43,7 +41,7 @@ const JsErrPage: FC = () => {
       title: '最后出现时间',
       render: (recode: JsErrorModel) => (
         <Tag icon={<ExclamationCircleOutlined />} color="warning">
-          {moment(recode?.lastTime).fromNow()}
+          {recode.lastTime}
         </Tag>
       )
     },

@@ -21,7 +21,12 @@ export interface GetUserListParams {
   userId: string
 }
 
-export type UserModel = CasedProperties<UserEntity>
+export type UserModel = CasedProperties<UserEntity> & {
+  osInfo: string
+  address: string
+  browserInfo: string
+  deviceInfo: string
+}
 
 export type UserListModel = Array<UserModel>
 

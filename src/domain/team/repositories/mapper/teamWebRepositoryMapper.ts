@@ -1,11 +1,11 @@
-import { AdminWebRepositoryMapper } from '@/domain/admin/repositories/mapper/adminWebRepositoryMapper'
-import { ProjectWebRepositoryMapper } from '@/domain/project/repositories/mapper/project-web-repository.mapper'
+import { adminWebRepositoryMapper } from '@/domain/admin/repositories/mapper/adminWebRepositoryMapper'
+import { projectWebRepositoryMapper } from '@/domain/project/repositories/mapper/projectWebRepositoryMapper'
 import { TeamEntity } from '../../model/teamEntity'
 import { TeamModel } from '../../model/teamModel'
 
 export function teamWebRepositoryMapper() {
-  const { mapFromProjectModel } = ProjectWebRepositoryMapper()
-  const { mapFromAdminModel } = AdminWebRepositoryMapper()
+  const { mapFromProjectModel } = projectWebRepositoryMapper()
+  const { mapFromAdminModel } = adminWebRepositoryMapper()
 
   const mapFromTeamModel = (param: TeamEntity): TeamModel => {
     return {

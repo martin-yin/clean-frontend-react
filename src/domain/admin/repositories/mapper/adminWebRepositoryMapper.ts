@@ -1,7 +1,7 @@
 import { AdminEntity } from '../../model/adminEntity'
 import { AdminModel } from '../../model/adminModel'
 
-export function AdminWebRepositoryMapper() {
+export function adminWebRepositoryMapper() {
   const mapFromAdminModel = (param: AdminEntity): AdminModel => {
     return {
       email: param.email,

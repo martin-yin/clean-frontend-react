@@ -1,9 +1,9 @@
+import { useCreateProjectAdapter } from '@/domain/project/adapter/createProjectAdpater'
+import { useGetProjectStatusListAdapter } from '@/domain/project/adapter/getProjectStatusListAdapter'
 import { Form } from 'antd'
 import React, { FC, useCallback, useState } from 'react'
-import { useCreateProjectAdapter } from '@/domain/project/adapter/create-project-adpater'
-import { useGetProjectStatusListAdapter } from '@/domain/project/adapter/get-project-status-list-adapter'
 import CreateProject from './components/createProject'
-import { HealthStatus } from './components/healthStatus'
+import { ProjectStatus } from './components/projectStatus'
 import './index.less'
 const HomePage: FC = () => {
   const [visible, setVisible] = useState(false)
@@ -23,7 +23,7 @@ const HomePage: FC = () => {
   return (
     <>
       <CreateProject visible={visible} onClose={handleCloseModal} onCreate={createProject} form={form} />
-      <HealthStatus list={projectStatusList} openModal={handleOpenModal} />
+      <ProjectStatus projectStatusList={projectStatusList} openModal={handleOpenModal} />
     </>
   )
 }
