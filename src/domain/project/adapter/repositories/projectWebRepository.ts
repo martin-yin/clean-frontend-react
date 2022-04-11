@@ -14,10 +14,10 @@ export class ProjectWebRepository implements ProjectRepository {
     return await this.webHttpService.get<ProjectListEntity, any>('/admin/projects')
   }
   async createProject(param: CreateProjectParams): Promise<IResponse<ProjectEntity>> {
-    return await this.webHttpService.get<ProjectEntity, CreateProjectParams>('/admin/createProject', param)
+    return await this.webHttpService.get('/admin/createProject', param)
   }
   async getProjectStatusList(): Promise<IResponse<ProjectStatusListEntity>> {
-    return await this.webHttpService.get<ProjectStatusListEntity, any>('/communal/getHealthStatus')
+    return await this.webHttpService.get('/communal/getHealthStatus')
   }
   async deleteProject(id: number): Promise<IResponse<string>> {
     return await this.webHttpService.get(`/admin/delProject?id=${id}`)

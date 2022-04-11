@@ -22,11 +22,15 @@ export const useHttpAdapter = () => {
     timeConsumes: []
   })
 
+  const getHttpStageUseCase = container.resolve(GetHttpStageUseCase)
+  const getHttpListUseCase = container.resolve(GetHttpListUseCase)
+  const getHttpQuotaUseCase = container.resolve(GetHttpQuotaUseCase)
+
   useEffect(() => {
     ;(async () => {
-      const httpStageTimeList = await container.resolve(GetHttpStageUseCase).execute(filterHeaderParams)
-      const httpList = await container.resolve(GetHttpListUseCase).execute(filterHeaderParams)
-      const quota = await container.resolve(GetHttpQuotaUseCase).execute(filterHeaderParams)
+      const httpStageTimeList = await getHttpStageUseCase.execute(filterHeaderParams)
+      const httpList = await getHttpListUseCase.execute(filterHeaderParams)
+      const quota = await getHttpQuotaUseCase.execute(filterHeaderParams)
       setHttpStageTimeList(httpStageTimeList)
       setHttpList(httpList)
       setHttpQuota(quota)

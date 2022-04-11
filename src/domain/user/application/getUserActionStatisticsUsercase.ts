@@ -1,9 +1,10 @@
 import { MessageService } from '@/infrastructure/interface/message'
 import { UseCase } from '@/infrastructure/interface/use.case'
-import { inject } from 'tsyringe'
+import { inject, injectable } from 'tsyringe'
 import { UserRepository } from '../model/userEntity'
 import { UserActionStatisticListModel } from '../model/userModel'
 
+@injectable()
 export class GetUserActionStatisticsUseCase implements UseCase<{ session_id: string }, UserActionStatisticListModel> {
   constructor(
     @inject('UserRepository') private userRepository: UserRepository,

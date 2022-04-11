@@ -11,6 +11,7 @@ abstract class JsErrorRepositoryMapper {
 }
 
 // Todo: 替换load hash
+
 export class JsErrorWebRepositoryMapper implements JsErrorRepositoryMapper {
   mapFromJsErrorModel(params: JsErrorEntity): CasedProperties<JsErrorEntity> {
     params.stack_frames = JSON.parse(params.stack_frames)

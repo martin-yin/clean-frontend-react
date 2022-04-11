@@ -1,6 +1,5 @@
 import { MessageService } from '@/infrastructure/interface/message'
 import { UseCase } from '@/infrastructure/interface/use.case'
-import { useWebMessageServicec } from '@/infrastructure/service/webMessageService'
 import { inject, injectable } from 'tsyringe'
 import { TeamRepositoryMapper } from '../adapter/repositories/mapper/teamWebRepositoryMapper'
 import { TeamRepository } from '../model/teamEntity'

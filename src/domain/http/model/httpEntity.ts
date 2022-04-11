@@ -1,11 +1,11 @@
 import { FilterHeaderParams } from '@/features/filterHeader/hook/useFilterHeaderInit'
 import { IResponse } from '@/infrastructure/lib/request'
 
-export interface HttpRepository {
-  getHttpQuota(params: FilterHeaderParams): Promise<IResponse<HttpQuotaEntity>>
-  getHttpList(params: FilterHeaderParams): Promise<IResponse<HttpListEntity>>
-  getHttpErrorList(params: FilterHeaderParams): Promise<IResponse<HttpListEntity>>
-  getHttpStageTimeList(params: FilterHeaderParams): Promise<IResponse<HttpStageTimeListEntity>>
+export abstract class HttpRepository {
+  abstract getHttpQuota(params: FilterHeaderParams): Promise<IResponse<HttpQuotaEntity>>
+  abstract getHttpList(params: FilterHeaderParams): Promise<IResponse<HttpListEntity>>
+  abstract getHttpErrorList(params: FilterHeaderParams): Promise<IResponse<HttpListEntity>>
+  abstract getHttpStageTimeList(params: FilterHeaderParams): Promise<IResponse<HttpStageTimeListEntity>>
 }
 
 export interface httpEntity {

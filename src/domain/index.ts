@@ -3,8 +3,10 @@ import { WebMessageService } from '@/infrastructure/service/webMessageService'
 import { container } from 'tsyringe'
 import { AdminWebRepository } from './admin/adapter/repositories/adminWebRepository'
 import { AdminWebRepositoryMapper } from './admin/adapter/repositories/mapper/adminWebRepositoryMapper'
+import { HttpWebRepository } from './http/adapter/repositories/httpWebRepository'
 import { HttpWebRepositoryMapper } from './http/adapter/repositories/mapper/httpWebRepositoryMapper'
 import { JsErrorWebRepository } from './jserror/adapter/repositories/jsErrorWebRepository'
+import { JsErrorWebRepositoryMapper } from './jserror/adapter/repositories/mapper/jsErrorWebRepositoryMapper'
 import { PerformanceWebRepositoryMapper } from './performance/adapter/repositories/mapper/performanceWebRepositoryMapper'
 import { PerformanceWebRepository } from './performance/adapter/repositories/performanceWebRepository'
 import { ProjectWebRepositoryMapper } from './project/adapter/repositories/mapper/projectWebRepositoryMapper'
@@ -34,20 +36,12 @@ container.register('AdminRepositoryMapper', {
   useClass: AdminWebRepositoryMapper
 })
 
-container.register('HttpRepositoryMapper', {
-  useClass: HttpWebRepositoryMapper
-})
-
-container.register('HttpRepositoryMapper', {
-  useClass: HttpWebRepositoryMapper
-})
-
 container.register('JsErrorRepository', {
   useClass: JsErrorWebRepository
 })
 
 container.register('JsErrorRepositoryMapper', {
-  useClass: JsErrorWebRepository
+  useClass: JsErrorWebRepositoryMapper
 })
 
 container.register('PerformanceRepository', {
@@ -90,6 +84,14 @@ container.register('UserRepository', {
   useClass: UserWebRepository
 })
 
-container.register('UserWebRepositoryMapper', {
+container.register('UserRepositoryMapper', {
   useClass: UserWebRepositoryMapper
+})
+
+container.register('HttpRepositoryMapper', {
+  useClass: HttpWebRepositoryMapper
+})
+
+container.register('HttpRepository', {
+  useClass: HttpWebRepository
 })

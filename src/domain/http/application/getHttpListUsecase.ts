@@ -9,7 +9,7 @@ import { HttpListModel } from '../model/httpModel'
 @injectable()
 export class GetHttpListUseCase implements UseCase<FilterHeaderParams, HttpListModel> {
   constructor(
-    @inject('AdminRepository') private httpRepository: HttpRepository,
+    @inject('HttpRepository') private httpRepository: HttpRepository,
     @inject('MessageService') private messageService: MessageService,
     @inject('HttpRepositoryMapper') private httpRepositoryMapper: HttpRepositoryMapper
   ) {}

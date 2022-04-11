@@ -14,27 +14,15 @@ import {
 export class PerformanceWebRepository implements PerformanceRepository {
   constructor(@inject('HttpService') private webHttpService: HttpService) {}
   async getPerformancQuota(params: FilterHeaderParams): Promise<IResponse<PerformanceQuotaEntity>> {
-    return await this.webHttpService.get<PerformanceQuotaEntity, FilterHeaderParams>(
-      '/communal/performanceQuota',
-      params
-    )
+    return await this.webHttpService.get('/communal/performanceQuota', params)
   }
   async getPerformanceStack(params: FilterHeaderParams): Promise<IResponse<PerformanceStackEntity>> {
-    return await this.webHttpService.get<PerformanceStackEntity, FilterHeaderParams>(
-      '/communal/performanceStack',
-      params
-    )
+    return await this.webHttpService.get('/communal/performanceStack', params)
   }
   async getPerformancePageList(params: FilterHeaderParams): Promise<IResponse<PerformanceListEntity>> {
-    return await this.webHttpService.get<PerformanceListEntity, FilterHeaderParams>(
-      '/communal/performancePages',
-      params
-    )
+    return await this.webHttpService.get('/communal/performancePages', params)
   }
   async getPerformanceStageTimeList(params: FilterHeaderParams): Promise<IResponse<PerformanceStageTimeListEntity>> {
-    return await this.webHttpService.get<PerformanceStageTimeListEntity, FilterHeaderParams>(
-      '/communal/performanceStageTime',
-      params
-    )
+    return await this.webHttpService.get('/communal/performanceStageTime', params)
   }
 }

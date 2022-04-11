@@ -9,7 +9,7 @@ import { HttpQuotaModel } from '../model/httpModel'
 @injectable()
 export class GetHttpQuotaUseCase implements UseCase<FilterHeaderParams, HttpQuotaModel> {
   constructor(
-    @inject('AdminRepository') private httpRepository: HttpRepository,
+    @inject('HttpRepository') private httpRepository: HttpRepository,
     @inject('MessageService') private messageService: MessageService,
     @inject('HttpRepositoryMapper') private httpRepositoryMapper: HttpRepositoryMapper
   ) {}

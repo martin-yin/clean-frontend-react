@@ -1,7 +1,8 @@
-import { getResourceErrorListUseCase } from '@/domain/resource/application/getResourceErrorListUsecase'
+import { GetResourceErrorListUseCase } from '@/domain/resource/application/getResourceErrorListUsecase'
 import { ResourceErrorListModel, ResourceErrorQuotaModel } from '@/domain/resource/model/resourceErrorModel'
 import { useFilterHeaderContext } from '@/features/filterHeader/hook/useFilterHeaderInit'
 import { useEffect, useState } from 'react'
+import { container } from 'tsyringe'
 
 export const useGetResourceErrorListAdapter = () => {
   const { filterHeaderParams } = useFilterHeaderContext()
@@ -12,10 +13,10 @@ export const useGetResourceErrorListAdapter = () => {
     quota: null,
     resourceList: []
   })
-
+  const usecase = container.resolve(GetResourceErrorListUseCase)
   useEffect(() => {
     ;(async () => {
-      const data = await getResourceErrorListUseCase(filterHeaderParams)
+      const data = await usecase.execute(filterHeaderParams)
       setResourceErrorData(data)
     })()
   }, [])

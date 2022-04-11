@@ -1,5 +1,5 @@
-import { useGetTeamListAdapter } from '@/domain/team/adapter/geTeamAdapter'
 import { ModalFrom } from '@/features/modalForm/modalForm'
+import { useGetTeamListAdapter } from '@/presentation/team/hook/geTeamAdapter'
 import { PlusOutlined } from '@ant-design/icons'
 import { Button, Col, Form, FormInstance, Input, Row, Select } from 'antd'
 import React, { FC } from 'react'

@@ -15,7 +15,7 @@ export class TeamWebRepositoryMapper implements TeamRepositoryMapper {
     @inject('ProjectRepositoryMapper') private projectRepositoryMapper: ProjectRepositoryMapper,
     @inject('AdminRepositoryMapper') private adminRepositoryMapper: AdminRepositoryMapper
   ) {}
-  mapFromTeamModel(params: TeamEntity) {
+  mapFromTeamModel(params: TeamEntity): TeamModel {
     return {
       id: params.id,
       adminId: params.admin_id,
@@ -27,8 +27,7 @@ export class TeamWebRepositoryMapper implements TeamRepositoryMapper {
       teamProjectList: params.team_project_list.map(item => this.projectRepositoryMapper.mapFromProjectModel(item))
     }
   }
-
-  mapFromTeamListModel(params: TeamListEntity) {
+  mapFromTeamListModel(params: TeamListEntity): TeamModelList {
     return params.map(item => {
       return {
         id: item.id,

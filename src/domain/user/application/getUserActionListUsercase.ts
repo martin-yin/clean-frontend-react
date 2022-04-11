@@ -1,10 +1,11 @@
 import { MessageService } from '@/infrastructure/interface/message'
 import { UseCase } from '@/infrastructure/interface/use.case'
-import { inject } from 'tsyringe'
+import { inject, injectable } from 'tsyringe'
 import { UserRepositoryMapper } from '../adapter/repositories/mapper/userWebRepository.mapper'
 import { UserRepository } from '../model/userEntity'
 import { GetUserActionListParams, UserActionListModel } from '../model/userModel'
 
+@injectable()
 export class GetUserActionListUseCase implements UseCase<GetUserActionListParams, UserActionListModel> {
   constructor(
     @inject('UserRepository') private userRepository: UserRepository,

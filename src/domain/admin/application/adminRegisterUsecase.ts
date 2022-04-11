@@ -15,7 +15,7 @@ export class AdminRegisterUseCase {
   async execute(params: RegisterParams) {
     const { data, code, msg } = await this.adminRepository.register(params)
     if (code == 200) {
-      return this.adminRepositoryMapper.mapFromAdminModel(data)
+      return this.adminRepositoryMapper.mapFromAdminLoginModel(data)
     } else {
       this.messageService.error(msg)
       return null

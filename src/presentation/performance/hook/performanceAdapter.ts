@@ -1,10 +1,11 @@
-import { getPerformanceStackUseCase } from '@/domain/performance/application/getPerformanceStackUsercase'
-import { getPerformancPageListUseCase } from '@/domain/performance/application/getPerformancPageListUsercase'
-import { getPerformancQuotaUseCase } from '@/domain/performance/application/getPerformancQuotaUsercase'
-import { getPerformanceStageTimeListUseCase } from '@/domain/performance/application/getPerformancStageTimeListUsercase'
+import { GetPerformanceStackUseCase } from '@/domain/performance/application/getPerformanceStackUsercase'
+import { GetPerformancPageListUseCase } from '@/domain/performance/application/getPerformancPageListUsercase'
+import { GetPerformancQuotaUseCase } from '@/domain/performance/application/getPerformancQuotaUsercase'
+import { GetPerformanceStageTimeListUseCase } from '@/domain/performance/application/getPerformancStageTimeListUsercase'
 import { PerformanceListModel, PerformanceQuotaModel } from '@/domain/performance/model/performanceModel'
 import { useFilterHeaderContext } from '@/features/filterHeader/hook/useFilterHeaderInit'
 import { useEffect, useState } from 'react'
+import { container } from 'tsyringe'
 
 export const usePerformanceAdapter = () => {
   const [quota, setQuota] = useState<PerformanceQuotaModel>()
@@ -27,15 +28,20 @@ export const usePerformanceAdapter = () => {
     timeConsumes: []
   })
 
+  const getPerformanceStackUseCase = container.resolve(GetPerformanceStackUseCase)
+  const getPerformanceStageTimeListUseCase = container.resolve(GetPerformanceStageTimeListUseCase)
+  const getPerformancQuotaUseCase = container.resolve(GetPerformancQuotaUseCase)
+  const getPerformancPageListUseCase = container.resolve(GetPerformancPageListUseCase)
+
   useEffect(() => {
     ;(async () => {
-      const stackConsumes = await getPerformanceStackUseCase(filterHeaderParams)
+      const stackConsumes = await getPerformanceStackUseCase.execute(filterHeaderParams)
       setStackConsumes(stackConsumes)
-      const performanceConsumes = await getPerformanceStageTimeListUseCase(filterHeaderParams)
+      const performanceConsumes = await getPerformanceStageTimeListUseCase.execute(filterHeaderParams)
       setPerformanceConsumes(performanceConsumes)
-      const quota = await getPerformancQuotaUseCase(filterHeaderParams)
+      const quota = await getPerformancQuotaUseCase.execute(filterHeaderParams)
       setQuota(quota)
-      const performances = await getPerformancPageListUseCase(filterHeaderParams)
+      const performances = await getPerformancPageListUseCase.execute(filterHeaderParams)
       setPerformances(performances)
     })()
   }, [filterHeaderParams])

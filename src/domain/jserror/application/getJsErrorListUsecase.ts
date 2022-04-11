@@ -11,7 +11,7 @@ export class GetJsErrorListUseCase implements UseCase<FilterHeaderParams, JsErro
   constructor(
     @inject('JsErrorRepository') private jsErrorRepository: JsErrorRepository,
     @inject('MessageService') private messageService: MessageService,
-    @inject('JsErrorWebRepositoryMapper') private jsErrorRepositoryMapper: JsErrorWebRepositoryMapper
+    @inject('JsErrorRepositoryMapper') private jsErrorRepositoryMapper: JsErrorWebRepositoryMapper
   ) {}
 
   async execute(params: FilterHeaderParams): Promise<JsErrorListModel> {

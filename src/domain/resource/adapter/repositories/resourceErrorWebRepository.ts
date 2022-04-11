@@ -9,9 +9,6 @@ export class ResourceErrorWebRepository implements ResourceErrorRepository {
   constructor(@inject('HttpService') private webHttpService: HttpService) {}
 
   getStaticErr(filterHeaderParams: FilterHeaderParams): Promise<IResponse<ResourceErrorListQuotaEntity>> {
-    return this.webHttpService.get<ResourceErrorListQuotaEntity, FilterHeaderParams>(
-      '/communal/staticErr',
-      filterHeaderParams
-    )
+    return this.webHttpService.get('/communal/staticErr', filterHeaderParams)
   }
 }

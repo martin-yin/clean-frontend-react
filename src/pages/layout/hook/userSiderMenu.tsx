@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useAppState } from '@/stores'
 import { setMenuKeys } from '@/stores/app.store'
-import { useHookTools } from '@/code/lib/toolhook'
+import { useHookTools } from '@/infrastructure/lib/toolhook'
 
 export const userSiderMenuInit = () => {
   const { storeDispatch } = useHookTools()

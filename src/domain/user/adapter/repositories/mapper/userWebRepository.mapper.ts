@@ -21,7 +21,7 @@ export class UserWebRepositoryMapper implements UserRepositoryMapper {
       return model
     })
   }
-  mapFromUser(params: UserEntity) {
+  mapFromUser(params: UserEntity): UserModel {
     return toUpperCaseData(_.omit(params, ['created_at', 'updated_at']))
   }
   mapFormUserActionListModel(params: UserActionListEntity): UserActionListModel {

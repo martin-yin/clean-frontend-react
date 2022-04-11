@@ -8,8 +8,8 @@ import {
   PageResourceIcon,
   PageViewIcon
 } from '@/assets'
-import { getUserAdpter } from '@/domain/user/adapter/getUserAdapter'
 import { ListLable, ListLableItem } from '@/features/listLable/listLable'
+import { getUserAdpter } from '../hook/getUserAdapter'
 
 const USERACTIONICONS: {
   [key: string]: { icon: string; text: string }

@@ -16,7 +16,7 @@ export class AdminLoginUseCase implements UseCase<LoginParams, AdminModel> {
   async execute(params: LoginParams) {
     const { data, code, msg } = await this.adminRepository.login(params)
     if (code == 200) {
-      return this.adminRepositoryMapper.mapFromAdminModel(data)
+      return this.adminRepositoryMapper.mapFromAdminLoginModel(data)
     } else {
       this.messageService.warning(msg)
       return null

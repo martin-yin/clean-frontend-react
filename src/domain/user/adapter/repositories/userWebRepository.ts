@@ -28,7 +28,7 @@ export class UserWebRepository implements UserRepository {
     return await this.webHttpService.get(`/communal/user?id=${id}`)
   }
   async getUserActionStatisticList(params: { session_id: string }): Promise<IResponse<UserActionStatisticListEntity>> {
-    return await this.webHttpService.get<UserActionStatisticListEntity, { session_id: string }>(
+    return await this.webHttpService.get<{ session_id: string }, UserActionStatisticListEntity>(
       '/communal/userActionStatistics',
       params
     )

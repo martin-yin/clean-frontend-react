@@ -9,7 +9,7 @@ import { HttpStageTimeListModel } from '../model/httpModel'
 @injectable()
 export class GetHttpStageUseCase implements UseCase<FilterHeaderParams, HttpStageTimeListModel> {
   constructor(
-    @inject('AdminRepository') private httpRepository: HttpRepository,
+    @inject('HttpRepository') private httpRepository: HttpRepository,
     @inject('MessageService') private messageService: MessageService,
     @inject('HttpRepositoryMapper') private httpRepositoryMapper: HttpRepositoryMapper
   ) {}
