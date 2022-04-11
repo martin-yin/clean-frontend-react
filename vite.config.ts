@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import WindiCSS from 'vite-plugin-windicss'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
+import ViteTS from 'vite-plugin-ts'
 
 const pathResolve = (dir: string) => resolve(__dirname, '.', dir)
 // https://vitejs.dev/config/
@@ -11,6 +12,7 @@ export default defineConfig({
     open: true
   },
   plugins: [
+    ViteTS(),
     WindiCSS(),
     react({
       babel: {

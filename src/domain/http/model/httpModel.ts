@@ -1,4 +1,4 @@
-import { CasedProperties } from '@/code/interface'
+import { CasedProperties } from '@/infrastructure/interface'
 import { httpEntity, HttpQuotaEntity } from './httpEntity'
 
 export interface HttpStageTimeListModel {

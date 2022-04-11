@@ -1,8 +1,8 @@
 import { FilterHeaderParams } from '@/features/filterHeader/hook/useFilterHeaderInit'
-import { IResponse } from '@/code/lib/request'
+import { IResponse } from '@/infrastructure/lib/request'
 
-export interface ResourceErrorRepository {
-  getStaticErr(filterHeaderParams: FilterHeaderParams): Promise<IResponse<ResourceErrorListQuotaEntity>>
+export abstract class ResourceErrorRepository {
+  abstract getStaticErr(filterHeaderParams: FilterHeaderParams): Promise<IResponse<ResourceErrorListQuotaEntity>>
 }
 
 export interface ResourceErrorQuotaEntity {

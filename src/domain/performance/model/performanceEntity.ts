@@ -1,11 +1,11 @@
 import { FilterHeaderParams } from '@/features/filterHeader/hook/useFilterHeaderInit'
-import { IResponse } from '@/code/lib/request'
+import { IResponse } from '@/infrastructure/lib/request'
 
-export interface PerformanceRepository {
-  getPerformancQuota(params: FilterHeaderParams): Promise<IResponse<PerformanceQuotaEntity>>
-  getPerformanceStack(params: FilterHeaderParams): Promise<IResponse<PerformanceStackEntity>>
-  getPerformancePageList(params: FilterHeaderParams): Promise<IResponse<PerformanceListEntity>>
-  getPerformanceStageTimeList(params: FilterHeaderParams): Promise<IResponse<PerformanceStageTimeListEntity>>
+export abstract class PerformanceRepository {
+  abstract getPerformancQuota(params: FilterHeaderParams): Promise<IResponse<PerformanceQuotaEntity>>
+  abstract getPerformanceStack(params: FilterHeaderParams): Promise<IResponse<PerformanceStackEntity>>
+  abstract getPerformancePageList(params: FilterHeaderParams): Promise<IResponse<PerformanceListEntity>>
+  abstract getPerformanceStageTimeList(params: FilterHeaderParams): Promise<IResponse<PerformanceStageTimeListEntity>>
 }
 
 export type PerformanceQuotaEntity = Record<'dom_parse' | 'load_page' | 'pv', number> & { fast: string }

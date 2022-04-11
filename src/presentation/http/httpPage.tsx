@@ -1,4 +1,4 @@
-import { useHttpAdapter } from '@/domain/http/adapter/httpAdapter'
+import { useHttpAdapter } from '@/presentation/http/hook/httpAdapter'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import HeaderQuota from '@/features/headerQuota/headerQuota'
 import { Card, Table } from 'antd'

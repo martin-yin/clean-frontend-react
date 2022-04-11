@@ -1,13 +1,14 @@
-import { IResponse } from '@/code/lib/request'
 import { AdminEntity } from '@/domain/admin/model/adminEntity'
 import { ProjectEntity } from '@/domain/project/model/projectEntity'
+import { IResponse } from '@/infrastructure/lib/request'
 import { CreateTeamParams, TeamModel } from './teamModel'
 
-export interface TeamRepository {
-  getTeamList(): Promise<IResponse<TeamEntity[]>>
-  createTeam(params: CreateTeamParams): Promise<IResponse<TeamModel>>
+export abstract class TeamRepository {
+  abstract getTeamList(): Promise<IResponse<TeamEntity[]>>
+  abstract createTeam(params: CreateTeamParams): Promise<IResponse<TeamEntity>>
 }
 
+export type TeamListEntity = Array<TeamEntity>
 export interface TeamEntity {
   created_at: string
   updated_at: string
@@ -15,8 +16,8 @@ export interface TeamEntity {
   name: string
   nick_name: string
   admin_id: number
-  team_admin_list: Array<AdminEntity>
-  team_project_list: Array<ProjectEntity>
+  team_admin_list: Array<AdminEntity> // 团队成员
+  team_project_list: Array<ProjectEntity> // 团队拥有的项目
 }
 
 export interface Team_admin {

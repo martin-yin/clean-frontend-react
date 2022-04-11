@@ -2,7 +2,7 @@ import { Card, Button } from 'antd'
 import React, { FC } from 'react'
 import { Descriptions } from 'antd'
 import Field from '@ant-design/pro-field'
-import { useGetProjectAdapter } from '@/domain/project/adapter/getProjectAdpater'
+import { useGetProjectAdapter } from '@/presentation/project/hook/getProjectAdpater'
 
 const ProjectPage: FC = () => {
   const { project, handleDeleteProject } = useGetProjectAdapter()

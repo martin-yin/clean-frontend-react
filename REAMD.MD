@@ -2,6 +2,14 @@
 
 验证整洁架构前端可行性。
 
+## todo
+
+1. 测试
+
+2. 基础设施接口
+
+3. 考虑接入 rxjs
+
 ## 参考资料
 
 https://github.com/phodal/clean-frontend

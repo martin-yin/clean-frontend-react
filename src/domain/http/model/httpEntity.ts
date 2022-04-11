@@ -1,5 +1,5 @@
 import { FilterHeaderParams } from '@/features/filterHeader/hook/useFilterHeaderInit'
-import { IResponse } from '@/code/lib/request'
+import { IResponse } from '@/infrastructure/lib/request'
 
 export interface HttpRepository {
   getHttpQuota(params: FilterHeaderParams): Promise<IResponse<HttpQuotaEntity>>

@@ -1,7 +1,7 @@
 import { Timeline } from 'antd'
 import React, { FC } from 'react'
 import { UserActionModel } from '@/domain/user/model/userModel'
-import { getTimeHHMM } from '@/code/lib'
+import { getTimeHHMM } from '@/infrastructure/lib'
 import { useActionTimeLineItem } from '../hook/useActionTimeLineItem'
 import { useUserContext } from '../provider/userProvider'
 

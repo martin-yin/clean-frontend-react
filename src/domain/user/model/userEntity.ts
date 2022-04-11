@@ -1,15 +1,11 @@
-import { IResponse } from '@/code/lib/request'
-import { GetUserListParams } from './userModel'
+import { IResponse } from '@/infrastructure/lib/request'
+import { GetUserActionListParams, GetUserListParams } from './userModel'
 
-export interface UserRepository {
-  getUserList(params: GetUserListParams): Promise<IResponse<UserListEntity>>
-  getUserActionList(params: {
-    session_id: string
-    page: number
-    limit: number
-  }): Promise<IResponse<UserActionListEntity>>
-  getUser(id: string): Promise<IResponse<UserEntity>>
-  getUserActionStatisticList(params: { session_id: string }): Promise<IResponse<UserActionStatisticListEntity>>
+export abstract class UserRepository {
+  abstract getUserList(params: GetUserListParams): Promise<IResponse<UserListEntity>>
+  abstract getUserActionList(params: GetUserActionListParams): Promise<IResponse<UserActionListEntity>>
+  abstract getUser(id: string): Promise<IResponse<UserEntity>>
+  abstract getUserActionStatisticList(params: { session_id: string }): Promise<IResponse<UserActionStatisticListEntity>>
 }
 
 export interface UserActionDetailBase {

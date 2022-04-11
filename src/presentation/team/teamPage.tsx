@@ -1,10 +1,10 @@
 import { AdminModel } from '@/domain/admin/model/adminModel'
-import { useGetTeamListAdapter } from '@/domain/team/adapter/geTeamAdapter'
 import { TeamModel } from '@/domain/team/model/teamModel'
 import { ModalFrom } from '@/features/modalForm/modalForm'
 import { PlusOutlined } from '@ant-design/icons'
 import { Button, Card, Form, Input, Space, Table, Tag } from 'antd'
 import React, { FC, useState } from 'react'
+import { useGetTeamListAdapter } from './hook/geTeamAdapter'
 
 const TeamPage: FC = () => {
   const [visible, setVisible] = useState(false)

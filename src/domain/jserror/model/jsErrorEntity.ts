@@ -1,10 +1,10 @@
 import { FilterHeaderParams } from '@/features/filterHeader/hook/useFilterHeaderInit'
-import { IResponse } from '@/code/lib/request'
+import { IResponse } from '@/infrastructure/lib/request'
 import { GetJsErrorParamModel } from './jsErrorModel'
 
-export interface JsErrorRepository {
-  getJsErrorList(param: FilterHeaderParams): Promise<IResponse<JsErrorListEntity>>
-  getJsError(param: GetJsErrorParamModel): Promise<IResponse<JsErrorEntity>>
+export abstract class JsErrorRepository {
+  abstract getJsErrorList(param: FilterHeaderParams): Promise<IResponse<JsErrorListEntity>>
+  abstract getJsError(param: GetJsErrorParamModel): Promise<IResponse<JsErrorEntity>>
 }
 
 export interface JsErrorEntity {

@@ -1,8 +1,8 @@
-import { useHttpErrAdapter } from '@/domain/http/adapter/htttErrAdapter'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import { Card, Table, Tag } from 'antd'
 import moment from 'moment'
 import React, { FC } from 'react'
+import { useHttpErrAdapter } from '../http/hook/htttErrAdapter'
 
 const HttpErrPage: FC = () => {
   const { httpErrList } = useHttpErrAdapter()

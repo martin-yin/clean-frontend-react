@@ -1,8 +1,8 @@
-import { useGetResourceErrorListAdapter } from '@/domain/resource/adapter/getResourceErrorListAdapter'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import HeaderQuota from '@/features/headerQuota/headerQuota'
 import { Card, Table } from 'antd'
 import React, { FC } from 'react'
+import { useGetResourceErrorListAdapter } from './hook/getResourceErrorListAdapter'
 
 const StaticErrPage: FC = () => {
   const { resourceErrorData } = useGetResourceErrorListAdapter()

@@ -1,10 +1,10 @@
-import { useGetJsErrorListAdapter } from '@/domain/jserror/adapter/getJsErrorListAdapter'
 import { JsErrorModel } from '@/domain/jserror/model/jsErrorModel'
 import FilterHeader from '@/features/filterHeader/filterHeader'
 import { CloseCircleOutlined, ExclamationCircleOutlined, SyncOutlined } from '@ant-design/icons'
 import { Card, Space, Table, Tag } from 'antd'
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useGetJsErrorListAdapter } from './hook/getJsErrorListAdapter'
 
 const JsErrPage: FC = () => {
   const navigate = useNavigate()

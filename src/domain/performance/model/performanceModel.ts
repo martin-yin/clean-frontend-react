@@ -1,4 +1,4 @@
-import { CasedProperties } from '@/code/interface'
+import { CasedProperties } from '@/infrastructure/interface'
 import { PerformanceEntity, PerformanceQuotaEntity, PerformanceStageTimeEntity } from './performanceEntity'
 
 export type PerformanceQuotaModel = CasedProperties<PerformanceQuotaEntity>

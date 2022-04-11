@@ -1,4 +1,4 @@
-import { CasedProperties } from '@/code/interface'
+import { CasedProperties } from '@/infrastructure/interface'
 import { ResourceErrorEntity, ResourceErrorQuotaEntity } from './resourceErrorEntity'
 
 export type ResourceErrorQuotaModel = CasedProperties<ResourceErrorQuotaEntity>

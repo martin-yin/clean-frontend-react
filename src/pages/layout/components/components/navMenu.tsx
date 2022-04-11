@@ -1,4 +1,4 @@
-import { useGetProjectListAdapter } from '@/domain/project/adapter/getProjectListAdpater'
+import { useGetProjectListAdapter } from '@/presentation/project/hook/getProjectListAdpater'
 import { ProjectModel } from '@/domain/project/model/projectModel'
 import { useAppState } from '@/stores'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'

@@ -1,9 +1,9 @@
-import { IResponse } from '@/code/lib/request'
-import { AdminModel, LoginParams, RegisterParams } from './adminModel'
+import { IResponse } from '@/infrastructure/lib/request'
+import { LoginParams, RegisterParams } from './adminModel'
 
-export interface AdminRepository {
-  login(param: LoginParams): Promise<IResponse<AdminModel>>
-  register(param: RegisterParams): Promise<IResponse<AdminModel>>
+export abstract class AdminRepository {
+  abstract login(param: LoginParams): Promise<IResponse<AdminEntity>>
+  abstract register(param: RegisterParams): Promise<IResponse<AdminEntity>>
 }
 
 export interface AdminEntity {

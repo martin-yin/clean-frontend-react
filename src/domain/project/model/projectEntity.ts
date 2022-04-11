@@ -1,12 +1,12 @@
-import { IResponse } from '../../../utils/request'
+import { IResponse } from '@/infrastructure/lib/request'
 import { CreateProjectParams } from './projectModel'
 
-export interface ProjectRepository {
-  getProject(): Promise<IResponse<ProjectEntity>>
-  getProjects(): Promise<IResponse<ProjectListEntity>>
-  createProject(param: CreateProjectParams): Promise<IResponse<ProjectEntity>>
-  getProjectStatusList(): Promise<IResponse<ProjectStatusListEntity>>
-  deleteProject(id: number): Promise<IResponse<string>>
+export abstract class ProjectRepository {
+  abstract getProject(): Promise<IResponse<ProjectEntity>>
+  abstract getProjects(): Promise<IResponse<ProjectListEntity>>
+  abstract createProject(param: CreateProjectParams): Promise<IResponse<ProjectEntity>>
+  abstract getProjectStatusList(): Promise<IResponse<ProjectStatusListEntity>>
+  abstract deleteProject(id: number): Promise<IResponse<string>>
 }
 
 export interface ProjectEntity {

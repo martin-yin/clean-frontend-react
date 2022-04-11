@@ -1,4 +1,4 @@
-import { useGetUserActionListAdapter } from '@/domain/user/adapter/getUserActionListAdapter'
+import { useGetUserActionListAdapter } from '@/domain/user/adapter/hook/getUserActionListAdapter'
 import { Card, Pagination } from 'antd'
 import React, { FC } from 'react'
 import UserActionDetail from './components/userActionDetail'

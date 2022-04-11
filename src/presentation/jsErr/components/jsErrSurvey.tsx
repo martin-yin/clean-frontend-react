@@ -1,5 +1,4 @@
-import { useGetJsErrorAdapter } from '@/domain/jserror/adapter/getJsErrorAdapter'
-import { JsErrorModel } from '@/domain/jserror/model/jsErrorModel'
+import { useGetJsErrorAdapter } from '@/presentation/jsErr/hook/getJsErrorAdapter'
 import StepBackwardOutlined from '@ant-design/icons/lib/icons/StepBackwardOutlined'
 import StepForwardOutlined from '@ant-design/icons/lib/icons/StepForwardOutlined'
 import { Button, Divider, Space } from 'antd'

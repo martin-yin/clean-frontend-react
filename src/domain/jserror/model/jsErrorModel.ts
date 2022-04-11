@@ -1,4 +1,4 @@
-import { CasedProperties } from '@/code/interface'
+import { CasedProperties } from '@/infrastructure/interface'
 import { JsErrorEntity } from './jsErrorEntity'
 
 export type JsErrorModel = CasedProperties<JsErrorEntity>
